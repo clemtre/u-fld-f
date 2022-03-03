@@ -1,33 +1,69 @@
-
 <template>
-  <main>    
-    <site-header />
+<div>
     <section class="site-section projets-section pt-8">
-      <div class="wrapper overflow-x-hidden">
-        
-        <ul v-if="projets" class="projets">
-          <projet-card v-for="projet in projets" :key="projet.id" :projet="projet.attributes" />
+
+        <!--<img :src="url" alt="">-->
+
+        <ul v-for="projet in ProjetsData" :key="projet">
+            <li v-for="media in projet.medias" :key="media">
+                <div v-for="image in media.item.images" :key="image">
+                    <img :src="url+image.directus_files_id.filename_disk" alt="">
+                    <hr> <br>
+
+                </div>
+            </li>
+
         </ul>
-        
-      </div>
+
     </section>
-    <site-footer />
-    
-  </main>
+</div>
 </template>
 
 <script>
-import SiteFooter from '../components/SiteFooter.vue'
-  export default {
-  components: { SiteFooter },
-    async asyncData({ store }) {
-      try {
-        const projets = await (await fetch(`${store.state.apiUrl}/projets?populate=*`)).json()
-        
-        return { projets: projets.data }
-      } catch (error) {
-        console.log(error)
+import {
+    gql
+} from 'graphql-tag'
+
+export default {
+    async asyncData({
+        $graphql
+    }) {
+        const query = gql `
+query homeData{
+	Projets {
+      titre
+      date
+      id
+      medias {
+      item{
+        ...on Images {
+          ordre
+          images{
+            directus_files_id{
+              filename_disk
+              }
+            }            
+        }
       }
-    },
+    }
+    
   }
+}
+    `
+        const uri = '3b3d21a6-153e-45f0-9ad7-eb527f99f81a.png'
+        const {
+            Projets
+        } = await $graphql.default.request(query)
+
+        return {
+            ProjetsData: {
+                ...Projets,
+
+            },
+            url: `https://porte-secrete.unexploredfields.com/assets/`
+
+            // "ProjetsData.0.medias.0.item.images.0.directus_files_id.filename_disk"
+        }
+    },
+}
 </script>

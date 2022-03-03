@@ -2,6 +2,10 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  env: {
+    apiUrl: process.env.API_URL,
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'u-fld-f',
@@ -34,9 +38,17 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxtjs/tailwindcss',
+    'nuxt-graphql-request',
     '@nuxtjs/google-fonts'
 
   ],
+  graphql: {
+    clients: {
+      default: {
+        endpoint: process.env.API_URL + 'graphql',
+      },
+    },
+  },
 
   googleFonts: {
     families: {
@@ -47,6 +59,13 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    [
+      'nuxt-image-extractor',
+      {
+        baseUrl: process.env.API_URL,
+        path: '/_images',
+      },
+    ],
     '@nuxtjs/axios',
     '@nuxtjs/markdownit'
   ],
