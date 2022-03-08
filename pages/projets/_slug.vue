@@ -1,57 +1,85 @@
 <template>
-  <!-- pages/projets/_slug.vue -->
-  <main>
-    <div v-if="projet">
-      <header>
-        <div class="cover img-cont h-full max-h-96 max-w-full">
-          <img
-            v-if="coverImageUrl"
-            class="min-w-full"
-            :src="coverImageUrl"
-            alt=""
-          />
-        </div>
-      </header>
-      <div
-        class="cont relative bg-gray-50 p-12 z-10 m-auto max-w-full "
-      >
-        <article class="prose prose-xl m-auto w-full">
-          
-          <h1 class="hero-text">{{ projet.title }}</h1>
-          <p>{{ projet.intro }}</p>
+<!-- pages/projets/_slug.vue -->
+<main>
+    {{projet.titre}}
 
-          <!-- use markdownit to render the markdown text to html -->
-          <div v-html="$md.render(projet.corps)" class="body"></div>
-        </article>
-      </div>
-    </div>
-    
-  </main>
+
+</main>
 </template>
 
-<script>
+<script >
+import {
+    gql
+} from 'graphql-tag'
+import Vue from 'vue'
+
 export default {
-  // use destructuring to get the context.params and context.store
-  async asyncData({ params, store }) {
-    try {
-      // fetch data by slug using Strapi query filters
-      const { data } = await (
-        await fetch(
-          `${store.state.apiUrl}/projets?filters[slug][$eq]=${params.slug}&populate=*`
-        )
-      ).json()
-      return { projet: data[0].attributes }
-    } catch (error) {
-      console.log(error)
-    }
-  },
-  computed: {
-    coverImageUrl() {
-      const url = this.$store.state.url
-      const imagePath = this.projet.couverture.data[0].attributes.formats.large.url
-      return url + imagePath
-    },
+    async asyncData({
+        $graphql, params
+    }) {
+        const query = gql `
+ query detailData($filter: Projets_filter) {
+        Projets(limit: 1, filter: $filter) {
+          titre
+}
+      }
+        `
+
+        const { Projets } = await $graphql.default.request(query, {
+          filter: {
+            slug: {
+              _eq: params.slug
+            },
+          },
+        })
+
+        const projet = {
+          ...Projets[0]
+        }
+
+
     
-  },
+        return {
+          projet,
+        }
+    }
+
 }
 </script>
+
+<style scoped>
+.uf-mono {
+    display: inline-block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+}
+
+.in-enter-active,
+.in-leave-active {
+    transition: opacity .5s;
+}
+
+.in-enter,
+.in-leave-active {
+    opacity: 0;
+}
+
+.titre {
+    text-align: center;
+    font-size: 32px;
+}
+
+.ctn {
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+img {
+
+    max-height: 80vh;
+    padding-bottom: 32px;
+    padding-top: 32px;
+}
+</style>
