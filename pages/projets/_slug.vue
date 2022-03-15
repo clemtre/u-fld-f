@@ -1,6 +1,8 @@
 <template>
 <!-- pages/projets/_slug.vue -->
 <main>
+    <site-header :show="show" />
+
     {{projet.titre}}
 
 
@@ -21,6 +23,18 @@ export default {
  query detailData($filter: Projets_filter) {
         Projets(limit: 1, filter: $filter) {
           titre
+          medias {
+      item{
+        ...on Images {
+          ordre
+          images{
+            directus_files_id{
+              filename_disk 
+
+              }
+            }            
+        }
+      }}
 }
       }
         `

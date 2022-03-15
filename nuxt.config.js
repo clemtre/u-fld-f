@@ -8,7 +8,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'u-fld-f',
+    title: 'Unexplored Fields',
     htmlAttrs: {
       lang: 'en',
     },
@@ -26,6 +26,13 @@ export default {
     '@/assets/css/tailwind.css',
     '@/assets/css/global.css'
   ],
+
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
