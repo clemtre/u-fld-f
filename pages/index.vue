@@ -1,16 +1,20 @@
 <template>
 <div>
 
-    <site-header :show="show" />
-    
 
-    <table v-if="show.flag" id="table-main">
-        <table-entry v-for="projet in ProjetsData" :key="projet.id" :projet="projet" />
+    <site-header class="header" :bio="bio" :show="show" />
+    <section class="main">
+
+    <table v-if="!show.flag" id="table-main">
+        <table-entry v-for="projet in ProjetsData" :key="projet.id" :projet="projet" :to="`/projets/${projet.slug}`" />
     </table>
 
-    <section v-if="!show.flag">
-        <projet-card class="projet" v-for="projet in ProjetsData" :key="projet.id" :projet="projet" />
+    <section v-if="show.flag">
+        <projet-card class="projet" v-for="projet in ProjetsData" :key="projet.id" :projet="projet" :to="`/projets/${projet.slug}`" />
     </section>
+    </section>
+
+    <site-footer />
 </div>
 </template>
 
@@ -21,6 +25,7 @@ import {
 import SiteHeader from '~/components/SiteHeader.vue'
 import TableEntry from '~/components/TableEntry.vue'
 import ProjetCard from '~/components/ProjetCard.vue'
+import SiteFooter from '~/components/SiteFooter.vue'
 
 export default {
     data() {
@@ -30,22 +35,27 @@ export default {
                 list: 'list',
                 feed: 'feed'
 
-            }
+            },
 
         }
 
-    },
-    components: {
+    
+    
+    
+
+},
+components: {
         SiteHeader,
         TableEntry,
-        ProjetCard
+        ProjetCard,
+        SiteFooter
     },
     async asyncData({
         $graphql
     }) {
         const query = gql `
 query homeData{
-	Projets {
+	Projets(filter : {featured: {_eq:true}}) {
       titre
       date
       id
@@ -74,6 +84,8 @@ query homeData{
   }
   bio {
         descriptif
+        tel
+        ville
     }
 }
     `
@@ -97,15 +109,31 @@ query homeData{
 </script>
 
 <style scoped>
+
+.header {
+    pointer-events: all;
+    z-index: 10000;
+}
+
+.main {
+    margin-top: 64px;
+    min-height: 100vh;
+}
+.main:hover {
+    pointer-events: all;
+}
 .uf-logo {
     display: inline;
 }
 
 table {
-    width: 100%;
+    width: calc(min(100%, 960px));
     border-collapse: collapse;
     height: fit-content;
     margin-bottom: 18px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    
 
 }
 

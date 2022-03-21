@@ -1,6 +1,6 @@
 <template>
 
-<svg v-bind:style="dim"
+<svg v-bind:style="[dim, inl]"
  xmlns="http://www.w3.org/2000/svg" 
  viewBox="0 0 441.22 481.28">
 
@@ -13,6 +13,10 @@
 export default {
   
   props: {
+    inline: {
+      type : Boolean,
+      required: false,
+    },
     size: {
       type : String,
       required: true,
@@ -27,6 +31,14 @@ export default {
           width:this.size,
           height:this.size
         }
+      }
+    },
+    inl: {
+      default: function(){
+        if(this.inline){
+        return {
+          display:'inline'
+        }}
       }
     },
     col: {
@@ -48,10 +60,7 @@ img{
 z-index: -1;
 position: relative;
 }
-.wrapper {
-  width: fit-content;
-  height: fit-content;
-}
+
 .active {
   transform: scale(.5);
 }
