@@ -93,16 +93,20 @@ nuxt-link:hover * {
 }
 
 .projet:hover .img-projet {
-    transform: scale(.95);
+    transform: scale(.8);
 }
 
-.img-projet {
+.img-projet, .titre {
     transform-origin: top;
 
     transition: all .2s ease-in-out;
     z-index: 10 !important;
 
 
+}
+
+.sous-titre {
+    max-width: 80%;
 }
 
 

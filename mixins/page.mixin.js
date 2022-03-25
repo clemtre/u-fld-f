@@ -3,12 +3,12 @@ import { gql } from 'graphql-tag'
 const defaultPageData = {
   head() {
     return {
-      title: `${this.page.SEO?.title || ''} - nkCreation`,
+      titre: `${this.projet.titre || ''} - nkCreation`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.page.SEO?.description || '',
+          content: this.projet.description || '',
         },
       ],
     }
@@ -22,41 +22,35 @@ export const pageMixinWithData = (pageSlug = '') => {
     ...defaultPageData,
     async asyncData({ $graphql, params, error }) {
       const query = gql`
-        query pagesData($filter: Pages_filter) {
-          Pages(filter: $filter) {
-            title
-            slug
-            content
-            date_updated
-            SEO {
-              title
-              description
-            }
+        query pagesData($filter: Projets_filter) {
+          Projets(filter: $filter) {
+            titre
+      date
+      id
+      slug
+            
           }
         }
       `
 
-      const { Pages: pages } = await $graphql.default.request(query, {
+      const { Projets: projets } = await $graphql.default.request(query, {
         filter: {
-          status: {
-            _eq: 'published',
-          },
           slug: {
             _eq: pageSlug || params.slug,
           },
         },
       })
 
-      if (!pages?.length) {
+      if (!projets?.length) {
         return error({ statusCode: 404, message: 'not found' })
       }
 
-      const page = pages[0]
+      const projet = projets[0]
 
       return {
-        page: {
-          ...page,
-          content: page.content ? createHTML(page.content) : '',
+        projet: {
+          ...projet,
+          content: projet.content ? createHTML(projet.content) : '',
         },
       }
     },

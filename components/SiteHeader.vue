@@ -1,6 +1,9 @@
 <template>
 <div class="padder">
     <div class="wrapper">
+        <div class="banner">
+            <span class="char" v-for="i of 200" :key="i">I+</span>
+        </div>
         <button @click="show.flag = !show.flag" id="index">
             {{ show.flag ? 'projects' : 'index'}}
         </button>
@@ -11,13 +14,18 @@
     </div>
     <transition name="info">
         <div @mouseenter="showBio= true" @mouseleave="showBio = null" class="show" v-show="showBio">
+
             <p v-html="bio.descriptif">
             </p>
             <ul>
-            <li v-html="bio.tel"></li>
-            <li v-html="bio.ville"></li>
+                <li v-html="bio.mail"></li>
+                <br>
+                <li>{{bio.tel}}
+                </li>
+                <li> {{bio.ville}}</li>
 
             </ul>
+
         </div>
         <!--<uf-logo size="32px" color="#FFFFFF" :inline="true"/> -->
     </transition>
@@ -35,7 +43,8 @@ export default {
             type: Object,
         },
         bio: {
-            type: Object
+            type: Object,
+            required:false
         },
         showBio: null
     },
@@ -43,6 +52,40 @@ export default {
 </script>
 
 <style scoped>
+.char {
+    top: 0;
+    display: none;
+letter-spacing: 0;
+    font-size: 15px;
+    
+}
+.banner {
+    position: absolute;
+
+left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+#lettrage{
+    float:left;
+    width: 128px;
+    height: auto;
+}
+
+ul {
+    width: 300px;
+    float: left;
+    border-top: 1px solid white;
+    padding-top: 16px;
+
+}
+
+li {
+    width: 300px;
+}
+
 #index {
     margin-left: 12px;
 }
@@ -55,7 +98,7 @@ export default {
     left: 0;
     z-index: 10;
     position: fixed;
-    mix-blend-mode: difference;
+    mix-blend-mode: none;
 
     background-color: #ffea00;
 
@@ -93,34 +136,65 @@ p:hover {
     z-index: 1000;
     width: 100%;
     left: 0;
-    height:calc(100% - 128px);
+    height: fit-content;
     mix-blend-mode: unset;
     background-color: black;
+    padding: 18px;
 
 }
 
 p {
     font-style: normal;
     text-align: left;
-    width: 90%;
-    padding: 18px;
+    width: 960px;
 }
 
-p,li {
+p,
+li {
+    float: left;
     color: white;
+}
 
+li {
+    float: right;
+    text-align: right;
 }
 
 @media screen and (max-width: 960px) {
     p {
         columns: 1;
 
+        width: 100%;
     }
+
+    ul,p,li {
+        font-size: 24px;
+        
+}
+
+    li,
+    ul {
+        width: 100%;
+    }
+    ul{
+        margin-top: 64px;
+        
+    }
+
 }
 
 @media screen and (min-width: 960px) {
     p {
         columns: 2;
+
+    }
+
+    ul,p,li {
+        font-size: 18px;
+    }
+
+    li {
+        margin-left: 64px;
 
     }
 }

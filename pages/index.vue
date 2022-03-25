@@ -1,7 +1,6 @@
 <template>
 <div>
 
-
     <site-header class="header" :bio="bio" :show="show" />
     <section class="main">
 
@@ -86,6 +85,7 @@ query homeData{
         descriptif
         tel
         ville
+        mail
     }
 }
     `
@@ -109,6 +109,11 @@ query homeData{
 </script>
 
 <style scoped>
+
+#lettrage {
+    width: 100%;
+    image-rendering:crisp-edges;
+}
 
 .header {
     pointer-events: all;

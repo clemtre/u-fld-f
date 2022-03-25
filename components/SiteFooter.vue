@@ -42,7 +42,6 @@ align-self: center ;
   justify-content: flex-end;
   width: 100%;
   display: flex;
-  height: calc(fit-content + 64px);
   background-color: black;
 }
 </style>
