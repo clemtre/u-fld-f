@@ -3,7 +3,7 @@ import { gql } from 'graphql-tag'
 const defaultPageData = {
   head() {
     return {
-      titre: `${this.projet.titre || ''} - nkCreation`,
+      titre: `${this.projet.titre || ''} - Unexplored Fields`,
       meta: [
         {
           hid: 'description',
@@ -28,6 +28,26 @@ export const pageMixinWithData = (pageSlug = '') => {
       date
       id
       slug
+      corps
+      credits
+      client {
+          nom
+        }
+      entete {
+          id
+      }
+      medias {
+      item{
+        ...on Images {
+          ordre
+          images{
+            directus_files_id{
+              filename_disk 
+
+              }
+            }            
+        }
+      }}
             
           }
         }

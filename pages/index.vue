@@ -43,6 +43,7 @@ export default {
     
 
 },
+
 components: {
         SiteHeader,
         TableEntry,
@@ -59,6 +60,7 @@ query homeData{
       date
       id
       slug
+      corps
       client {
           nom
         }
@@ -83,6 +85,7 @@ query homeData{
   }
   bio {
         descriptif
+        network
         tel
         ville
         mail
@@ -93,7 +96,7 @@ query homeData{
             Projets,
             bio
         } = await $graphql.default.request(query)
-        bio.descriptif = bio.descriptif.replace(/(<\/([^>]+)>)/gi, "<br>").replace(/(<p>)/gi, "");
+        // bio.descriptif = bio.descriptif.replace(/(<\/([^>]+)>)/gi, "<br>").replace(/(<p>)/gi, "");
         return {
             ProjetsData: {
                 ...Projets,
@@ -155,5 +158,8 @@ table {
 .in-enter,
 .in-leave-active {
     opacity: 0;
+}
+body {
+    background-color: black
 }
 </style>

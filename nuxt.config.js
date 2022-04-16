@@ -46,7 +46,8 @@ export default {
   buildModules: [
     '@nuxtjs/tailwindcss',
     'nuxt-graphql-request',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/color-mode'
 
   ],
   graphql: {
@@ -73,8 +74,6 @@ export default {
         path: '/_images',
       },
     ],
-    '@nuxtjs/axios',
-    '@nuxtjs/markdownit'
   ],
   markdownit: {
     runtime: true, // Support `$md()`

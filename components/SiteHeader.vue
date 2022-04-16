@@ -1,201 +1,199 @@
 <template>
-<div class="padder">
+  <div class="padder">
     <div class="wrapper">
-        <div class="banner">
-            <span class="char" v-for="i of 200" :key="i">I+</span>
-        </div>
-        <button @click="show.flag = !show.flag" id="index">
-            {{ show.flag ? 'projects' : 'index'}}
-        </button>
-        <button @mouseenter="showBio = true" @mouseleave="showBio = null">
-            <span>info</span>
-        </button>
-
+      <button @click="show.flag = !show.flag" id="index">
+        {{ show.flag ? 'projects' : 'index' }}
+      </button>
+      <button @mouseenter="showBio = true" @mouseleave="showBio = null">
+        <span>info</span>
+      </button>
     </div>
     <transition name="info">
-        <div @mouseenter="showBio= true" @mouseleave="showBio = null" class="show" v-show="showBio">
-
-            <p v-html="bio.descriptif">
-            </p>
-            <ul>
-                <li v-html="bio.mail"></li>
-                <br>
-                <li>{{bio.tel}}
-                </li>
-                <li> {{bio.ville}}</li>
-
-            </ul>
-
-        </div>
-        <!--<uf-logo size="32px" color="#FFFFFF" :inline="true"/> -->
+      <div
+        @mouseenter="showBio = true"
+        @mouseleave="showBio = null"
+        class="show"
+        v-show="showBio"
+      >
+        <p v-html="bio.descriptif"></p>
+        <!-- <p v-html="bio.network"></p> -->
+        <ul>
+          <li v-html="bio.mail"></li>
+          <li>{{ bio.tel }}</li>
+          <li>{{ bio.ville }}</li>
+        </ul>
+      </div>
+      <!--<uf-logo size="32px" color="#FFFFFF" :inline="true"/> -->
     </transition>
-</div>
+  </div>
 </template>
 
 <script>
 import UfLogo from './UfLogo.vue'
 export default {
-    components: {
-        UfLogo
+  components: {
+    UfLogo,
+  },
+  props: {
+    show: {
+      type: Object,
     },
-    props: {
-        show: {
-            type: Object,
-        },
-        bio: {
-            type: Object,
-            required:false
-        },
-        showBio: null
+    bio: {
+      type: Object,
+      required: false,
     },
+    showBio: null,
+  },
 }
 </script>
 
 <style scoped>
 .char {
-    top: 0;
-    display: none;
-letter-spacing: 0;
-    font-size: 15px;
-    
+  top: 0;
+  display: none;
+  letter-spacing: 0;
+  font-size: 15px;
 }
 .banner {
-    position: absolute;
+  position: absolute;
 
-left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
 }
-#lettrage{
-    float:left;
-    width: 128px;
-    height: auto;
+#lettrage {
+  float: left;
+  width: 128px;
+  height: auto;
 }
 
 ul {
-    width: 300px;
-    float: left;
-    border-top: 1px solid white;
-    padding-top: 16px;
-
+  width: 300px;
+  float: left;
 }
 
 li {
-    width: 300px;
+  width: 300px;
 }
 
 #index {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 
 .padder {
-    height: 54px;
-    width: 100%;
-    border-bottom: 1px solid black;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    position: fixed;
-    mix-blend-mode: none;
+  height: 54px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  position: fixed;
+  mix-blend-mode: none;
 
-    background-color: #ffea00;
-
+  background-color: #ffea00;
 }
 
-.wrapper {}
+.wrapper {
+}
 
 * {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 .info-enter-active {
-    transition: all .3s;
+  transition: all 0.3s;
 }
 
 .info-enter-active {
-    transition: all .3s;
+  transition: all 0.3s;
 }
 
 .info-enter,
 .info-leave-to,
 .info-leave-active {
-    opacity: 0;
+  opacity: 0;
 }
 
 p:hover {
-    cursor: zoom-in
+  cursor: zoom-in;
 }
 
 .show {
-    pointer-events: all !important;
+  pointer-events: all !important;
 
-    position: fixed;
-    overflow: auto;
-    z-index: 1000;
-    width: 100%;
-    left: 0;
-    height: fit-content;
-    mix-blend-mode: unset;
-    background-color: black;
-    padding: 18px;
-
+  position: fixed;
+  overflow: auto;
+  z-index: 1000;
+  width: 100%;
+  left: 0;
+  height: fit-content;
+  mix-blend-mode: unset;
+  background-color: black;
+  padding: 18px;
 }
 
 p {
-    font-style: normal;
-    text-align: left;
-    width: 960px;
+  font-style: normal;
+  text-align: left;
+  width: 960px;
 }
 
 p,
 li {
-    float: left;
-    color: white;
+  float: left;
+  color: white;
 }
 
 li {
-    float: right;
-    text-align: right;
+  float: right;
+  text-align: right;
 }
 
 @media screen and (max-width: 960px) {
-    p {
-        columns: 1;
+  p {
+    columns: 1;
 
-        width: 100%;
-    }
+    width: 100%;
+  }
 
-    ul,p,li {
-        font-size: 24px;
-        
-}
+  ul,
+  p,
+  li {
+    font-size: 24px;
+  }
 
-    li,
-    ul {
-        width: 100%;
-    }
-    ul{
-        margin-top: 64px;
-        
-    }
+  li,
+  ul {
+    width: 100%;
+  }
+  ul {
+    margin-top: 64px;
+  border-top: 1px solid white;
+  padding-top: 16px;
 
+
+  }
 }
 
 @media screen and (min-width: 960px) {
-    p {
-        columns: 2;
+  p {
+    columns: 2;
+  }
 
-    }
+  ul,
+  p,
+  li {
+    font-size: 18px;
+  }
 
-    ul,p,li {
-        font-size: 18px;
-    }
+  ul {
+    float: right;
+  }
 
-    li {
-        margin-left: 64px;
-
-    }
+  li {
+    margin-left: 64px;
+  }
 }
 </style>

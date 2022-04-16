@@ -23,3 +23,7 @@ p,a,li, table,button {
 .projet:hover .titre, a:hover, button:hover{
   font-style: italic;
 }
+
+html, body {
+  background-color : #111 ;
+}

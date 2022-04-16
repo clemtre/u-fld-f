@@ -1,6 +1,13 @@
 <template>
 <div>
-    {{projet}}
+    <p v-html="projet.titre"></p>
+    <p v-html="projet.date"></p>
+    <p>Credits : {{projet.credits}}</p>
+    <p v-html="projet.corps"></p>
+
+
+
+
 </div>
 </template>
 
@@ -18,8 +25,10 @@ export default {
                 feed: 'feed'
 
             },
-
+           
         }
+        
+
 
     },
     components: {
@@ -28,3 +37,9 @@ export default {
     mixins: [pageMixinWithData()],
 }
 </script>
+
+<style scoped>
+
+
+
+</style>
