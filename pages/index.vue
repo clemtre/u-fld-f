@@ -7,7 +7,13 @@
     <table v-if="!show.flag" id="table-main">
         <table-entry v-for="projet in ProjetsData" :key="projet.id" :projet="projet" :to="`/projets/${projet.slug}`" />
     </table>
-
+<div style="color='white'">
+    <h1>Color mode: {{ $colorMode.value }}</h1>
+    <select v-model="$colorMode.preference">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </div>
     <section v-if="show.flag">
         <projet-card class="projet" v-for="projet in ProjetsData" :key="projet.id" :projet="projet" :to="`/projets/${projet.slug}`" />
     </section>
@@ -66,6 +72,7 @@ query homeData{
         }
       entete {
           id
+          filename_disk
       }
       medias {
       item{

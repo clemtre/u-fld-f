@@ -1,0 +1,7 @@
+.dark-mode * {
+    color: blue;
+}
+
+.light-mode * {
+    color: red;
+}

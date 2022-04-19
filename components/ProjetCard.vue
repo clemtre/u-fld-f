@@ -3,7 +3,8 @@
             <uf-logo class="uf-mono" size="48px" color="#000000"/>
             <span class="titre" v-html="projet.titre"></span>
             <span class="sous-titre" v-html="projet.date + ' • ' + projet.client.nom"></span>
-            <img v-if="projet.entete" class="img-projet" :src="url + projet.entete.id + '?quality=80&width=1920&withoutEnlargement'" alt="">
+            <img v-if="projet.entete" class="img-projet" :src="url + projet.entete.filename_disk + qual" alt="">
+            <p>{{projet.entete.filename_disk}}</p>
 
             <!--<div v-for="media in projet.medias" :key="media" >
                     
@@ -24,7 +25,7 @@
       data(){
           return{
               url:'https://porte-secrete.unexploredfields.com/assets/',
-              qual: '?quality=59'
+              qual: '?quality=80&width=1920&withoutEnlargement'
           }
       },
     props: {

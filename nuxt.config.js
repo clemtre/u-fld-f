@@ -24,7 +24,9 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/tailwind.css',
-    '@/assets/css/global.css'
+    '@/assets/css/global.css',
+    '@/assets/css/darkmode.css'
+
   ],
 
   vue: {
@@ -66,28 +68,26 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     [
-      'nuxt-image-extractor',
+      '~/modules/extractor',
       {
+        path: '/_images', // dir where downloaded images will be stored
+
         baseUrl: process.env.API_URL,
-        path: '/_images',
       },
-    ],
+
+    ]
+    // 
   ],
   markdownit: {
     runtime: true, // Support `$md()`
-      preset: 'default',
-      linkify: true,
-      breaks: true,
-      use: ['markdown-it-div', 'markdown-it-attrs']
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    use: ['markdown-it-div', 'markdown-it-attrs']
   },
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
-  },
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
