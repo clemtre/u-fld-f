@@ -2,6 +2,7 @@
     color: blue;
 }
 
-.light-mode * {
+.light-mode p {
     color: red;
 }
+
