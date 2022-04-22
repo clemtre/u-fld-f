@@ -25,7 +25,8 @@ export default {
   css: [
     '@/assets/css/tailwind.css',
     '@/assets/css/global.css',
-    '@/assets/css/darkmode.css'
+    '@/assets/css/darkmode.css',
+    '@/assets/css/type.css'
 
   ],
 

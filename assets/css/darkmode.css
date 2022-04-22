@@ -1,8 +1,19 @@
-.dark-mode * {
-    color: blue;
+
+.dark-mode :is(p, a){
+    color: white;
+}
+.dark-mode :is(html, body){
+        background-color : #111 ;
+      
 }
 
-.light-mode p {
-    color: red;
+
+
+.light-mode :is(p, a){
+    color: black;
 }
 
+.light-mode :is(html, body){
+    background-color : #fff ;
+  
+}

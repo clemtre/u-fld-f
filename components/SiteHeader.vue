@@ -1,24 +1,22 @@
 <template>
   <div class="padder">
     <div class="wrapper">
-      <button @click="show.flag = !show.flag" id="index">
-        {{ show.flag ? 'projects' : 'index' }}
+      <button @click="$emit('listToggle')" id="index">
+        {{ projetSwitch ? 'projects' : 'index' }}
       </button>
-      <button @mouseenter="showBio = true" @mouseleave="showBio = null">
+      <button @click="$emit('darkToggle')">
+        {{ darkSwitch ? 'light' : 'dark'}}
+      </button>
+      <button @mouseenter="mouseEnter" @mouseleave="mouseLeave">
         <span>info</span>
       </button>
     </div>
     <transition name="info">
-      <div
-        @mouseenter="showBio = true"
-        @mouseleave="showBio = null"
-        class="show"
-        v-show="showBio"
-      >
-        <p v-html="bio.descriptif"></p>
+      <div class="show" v-show="toShowOnHover">
+        <span v-html="bio.descriptif"></span>
         <!-- <p v-html="bio.network"></p> -->
         <ul>
-          <li v-html="bio.mail"></li>
+          <li>{{bio.mail}}></li>
           <li>{{ bio.tel }}</li>
           <li>{{ bio.ville }}</li>
         </ul>
@@ -34,15 +32,20 @@ export default {
   components: {
     UfLogo,
   },
-  props: {
-    show: {
-      type: Object,
+  data() {
+    return {
+      toShowOnHover: false,
+
+    }
+  },
+  props: ['projetSwitch', 'bio', 'darkSwitch'],
+  methods: {
+    mouseEnter: function () {
+      this.toShowOnHover = !this.toShowOnHover
     },
-    bio: {
-      type: Object,
-      required: false,
+    mouseLeave: function () {
+      this.toShowOnHover = false
     },
-    showBio: null,
   },
 }
 </script>
@@ -170,10 +173,8 @@ li {
   }
   ul {
     margin-top: 64px;
-  border-top: 1px solid white;
-  padding-top: 16px;
-
-
+    border-top: 1px solid white;
+    padding-top: 16px;
   }
 }
 

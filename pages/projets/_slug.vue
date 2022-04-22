@@ -1,9 +1,12 @@
 <template>
 <div>
-    <p v-html="projet.titre"></p>
-    <p v-html="projet.date"></p>
-    <p>Credits : {{projet.credits}}</p>
-    <p v-html="projet.corps"></p>
+    <p class="titre" v-html="projet.titre"></p>
+
+        <img src="" alt="">
+
+    <p class="meta" v-html="projet.date"></p>
+    <p class="meta">Credits : {{projet.credits}}</p>
+    <p class="corps" v-html="projet.corps"></p>
 
 
 
@@ -19,12 +22,12 @@ import {
 export default {
     data() {
         return {
-            show: {
-                flag: true,
-                list: 'list',
-                feed: 'feed'
-
-            },
+            // show: {
+            //     flag: true,
+            //     list: 'list',
+            //     feed: 'feed'
+ 
+            // },
            
         }
         

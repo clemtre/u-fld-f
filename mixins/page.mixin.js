@@ -35,6 +35,7 @@ export const pageMixinWithData = (pageSlug = '') => {
         }
       entete {
           id
+          filename_disk
       }
       medias {
       item{
