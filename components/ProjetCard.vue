@@ -1,6 +1,6 @@
 <template >
   <nuxt-link  :to="`/projets/${projet.slug}`">
-            <uf-logo class="uf-mono" size="48px" color="#000000"/>
+            <uf-logo class="uf-mono" size="48px" color=""/>
             <span class="titre" v-html="projet.titre"></span>
             <span class="sous-titre" v-html="projet.date + ' • ' + projet.client.nom"></span>
             <img v-if="projet.entete" class="img-projet" :src="url + projet.entete.filename_disk + qual" alt="">

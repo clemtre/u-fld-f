@@ -1,5 +1,5 @@
 
-.dark-mode :is(p, a){
+.dark-mode :is(p, a, span){
     color: white;
 }
 .dark-mode :is(html, body){
@@ -17,3 +17,6 @@
     background-color : #fff ;
   
 }
+
+.light-mode .ufLogo { fill: black; }
+.dark-mode .ufLogo { fill: white; }

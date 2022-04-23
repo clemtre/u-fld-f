@@ -1,19 +1,19 @@
 <template>
   <div class="padder">
     <div class="wrapper">
-      <button @click="$emit('listToggle')" id="index">
+      <button @click="$emit('listToggle')" id="index" class="header">
         {{ projetSwitch ? 'projects' : 'index' }}
       </button>
-      <button @click="$emit('darkToggle')">
-        {{ darkSwitch ? 'light' : 'dark'}}
+      <button @click="$emit('darkToggle')" class="header">
+        {{ darkSwitch ? 'dark' : 'light'}}
       </button>
       <button @mouseenter="mouseEnter" @mouseleave="mouseLeave">
-        <span>info</span>
+        info
       </button>
     </div>
     <transition name="info">
       <div class="show" v-show="toShowOnHover">
-        <span v-html="bio.descriptif"></span>
+        <div class="bio paragraph" v-html="bio.descriptif"></div>
         <!-- <p v-html="bio.network"></p> -->
         <ul>
           <li>{{bio.mail}}></li>
@@ -51,6 +51,15 @@ export default {
 </script>
 
 <style scoped>
+
+.header {
+  color: black
+}
+
+ .bio >>> p {
+  color : white 
+}
+
 .char {
   top: 0;
   display: none;

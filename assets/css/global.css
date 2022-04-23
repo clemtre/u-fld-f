@@ -1,7 +1,7 @@
 p,a,li, table,button {
     font-family: 'Cormorant Garamond';
 }
-.paragraph {
+/* .paragraph {
     text-indent: 12px;
     font-size: 24px;
     column-count: 2;
@@ -9,7 +9,7 @@ p,a,li, table,button {
     height: 300px;
     padding: 200px;
     color: black;
-}
+} */
 
 .page-enter-active,
 .page-leave-active {
@@ -24,3 +24,7 @@ p,a,li, table,button {
   font-style: italic;
 }
 
+.paragraph p:not(:first-child) {
+  text-indent: 24px;
+
+}

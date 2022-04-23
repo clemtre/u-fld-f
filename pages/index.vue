@@ -16,12 +16,6 @@
           :to="`/projets/${projet.slug}`"
         />
       </table>
-      <div style="color='white'">
-        <select v-model="$colorMode.preference">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-      </div>
       <section v-if="projetSwitch">
         <projet-card
           class="projet"
