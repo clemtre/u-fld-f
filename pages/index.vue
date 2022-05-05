@@ -10,7 +10,7 @@
     <section class="main">
       <table v-if="!projetSwitch" id="table-main">
         <table-entry
-          v-for="projet in ProjetsData"
+          v-for="projet in Projets"
           :key="projet.id"
           :projet="projet"
           :to="`/projets/${projet.slug}`"
@@ -19,7 +19,7 @@
       <section v-if="projetSwitch">
         <projet-card
           class="projet"
-          v-for="projet in ProjetsData"
+          v-for="projet in Projets"
           :key="projet.id"
           :projet="projet"
           :to="`/projets/${projet.slug}`"
@@ -32,20 +32,20 @@
 </template>
 
 <script>
-import { gql } from 'graphql-tag'
 import SiteHeader from '~/components/SiteHeader.vue'
 import TableEntry from '~/components/TableEntry.vue'
 import ProjetCard from '~/components/ProjetCard.vue'
 import SiteFooter from '~/components/SiteFooter.vue'
 
-
+import { pageMixinWithData } from '~/mixins/page.mixin'
 
 export default {
+  mixins: [pageMixinWithData],
+
   data() {
     return {
       projetSwitch: true,
-      darkSwitch: false
-      
+      darkSwitch: true,
     }
   },
   methods:{
@@ -75,57 +75,9 @@ export default {
     ProjetCard,
     SiteFooter,
   },
-  async asyncData({ $graphql }) {
-    const query = gql`
-      query homeData {
-        Projets(filter: { featured: { _eq: true } }) {
-          titre
-          date
-          id
-          slug
-          corps
-          client {
-            nom
-          }
-          entete {
-            id
-            filename_disk
-          }
-          medias {
-            item {
-              ... on Images {
-                ordre
-                images {
-                  directus_files_id {
-                    filename_disk
-                  }
-                }
-              }
-            }
-          }
-        }
-        bio {
-          descriptif
-          network
-          tel
-          ville
-          mail
-        }
-      }
-    `
-    const { Projets, bio } = await $graphql.default.request(query)
-    // bio.descriptif = bio.descriptif.replace(/(<\/([^>]+)>)/gi, "<br>").replace(/(<p>)/gi, "");
-    return {
-      ProjetsData: {
-        ...Projets,
-      },
-      bio,
 
-      url: `https://porte-secrete.unexploredfields.com/assets/`,
+  
 
-      // "ProjetsData.0.medias.0.item.images.0.directus_files_id.filename_disk"
-    }
-  },
 }
 </script>
 

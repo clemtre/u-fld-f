@@ -2,10 +2,13 @@
   <div class="padder">
     <div class="wrapper">
       <button @click="$emit('listToggle')" id="index" class="header">
-        {{ projetSwitch ? 'projects' : 'index' }}
+        <img v-if="projetSwitch" src="~/assets/svg/fullscreen-exit-line.svg" alt="">
+        <img v-if="!projetSwitch" src="~/assets/svg/list-check.svg" alt="">
       </button>
       <button @click="$emit('darkToggle')" class="header">
-        {{ darkSwitch ? 'dark' : 'light'}}
+        <img v-if="darkSwitch" src="~/assets/svg/moon-line.svg" alt="">
+        <img v-if="!darkSwitch" src="~/assets/svg/sun-line.svg" alt="">
+        <!-- {{ darkSwitch ? 'dark' : 'light'}} -->
       </button>
       <button @mouseenter="mouseEnter" @mouseleave="mouseLeave">
         info
@@ -35,7 +38,7 @@ export default {
   data() {
     return {
       toShowOnHover: false,
-
+      
     }
   },
   props: ['projetSwitch', 'bio', 'darkSwitch'],

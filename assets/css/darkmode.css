@@ -3,7 +3,7 @@
     color: white;
 }
 .dark-mode :is(html, body){
-        background-color : #111 ;
+        background-color : #011101 ;
       
 }
 

@@ -1,22 +1,14 @@
 <template >
+
+            <!-- Comment pointer vers projet.slug-1 et projet.slug+1 ???  -->
   <nuxt-link  :to="`/projets/${projet.slug}`">
+        <div class="texte">
             <uf-logo class="uf-mono" size="48px" color=""/>
             <span class="titre" v-html="projet.titre"></span>
             <span class="sous-titre" v-html="projet.date + ' • ' + projet.client.nom"></span>
-            <img v-if="projet.entete" class="img-projet" :src="url + projet.entete.filename_disk + qual" alt="">
-            <p>{{projet.entete.filename_disk}}</p>
+        </div>
+            <img v-if="projet.entete" class="img-projet" :src="url + projet.entete + qual" alt="">
 
-            <!--<div v-for="media in projet.medias" :key="media" >
-                    
-                    
-                    
-                    <div class="ctn" v-for="image in media.item.images" :key="image">
-                        <img :src="url+image.directus_files_id.filename_disk+'?height=1280&format=jpg'" alt="">
-                        <hr> <br>
-
-                    </div>
-                </div>
-                -->
   </nuxt-link>
 </template>
 
@@ -42,6 +34,15 @@
 </script>
 
 <style scoped>
+
+.texte {
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%,0);
+    position: absolute;
+    top: 50%;
+    z-index: 1000;
+}
 
 
 
@@ -84,9 +85,9 @@ nuxt-link:hover * {
 
 
 .img-projet {
-    width: 1000px;
     padding-bottom: 32px;
     padding-top: 32px;
+    max-height: 100vh;
 }
 
 .projet:hover .uf-mono img{
@@ -94,7 +95,7 @@ nuxt-link:hover * {
 }
 
 .projet:hover .img-projet {
-    transform: scale(.8);
+    /* transform: scale(.8); */
 }
 
 .img-projet, .titre {
