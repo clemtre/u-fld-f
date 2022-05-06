@@ -57,7 +57,7 @@
 //     '@nuxtjs/color-mode',
 
 //   ],
-  
+
 //   googleFonts: {
 //     families: {
 //       'Coromont+Garamond': true
@@ -125,7 +125,7 @@ export default {
   },
 
   css: [
-        '@/assets/css/tailwind.css',
+    '@/assets/css/tailwind.css',
     '@/assets/css/global.css',
     '@/assets/css/darkmode.css',
     '@/assets/css/type.css'
@@ -133,8 +133,12 @@ export default {
 
   ],
 
-  buildModules:[
-    '@nuxt/image'
+  buildModules: [
+    '@nuxt/image',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/color-mode',
+
   ],
 
   components: true,
@@ -149,7 +153,13 @@ export default {
 
   modules: [
     '@nuxt/image',
-    '~/modules/directus'
+    '~/modules/directus',
+    //       '~/modules/extractor',
+//       {
+//         path: '/_images', // dir where downloaded images will be stored
+
+//         baseUrl: process.env.API_URL
+//       },
   ],
 
   directus: {

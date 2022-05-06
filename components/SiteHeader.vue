@@ -98,7 +98,6 @@ li {
 }
 
 .padder {
-  height: 54px;
   width: 100%;
   border-bottom: 1px solid black;
   top: 0;
@@ -111,6 +110,7 @@ li {
 }
 
 .wrapper {
+  height: 54px;
 }
 
 * {
@@ -147,6 +147,7 @@ p:hover {
   mix-blend-mode: unset;
   background-color: black;
   padding: 18px;
+  margin-top :0px;
 }
 
 p {

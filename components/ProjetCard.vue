@@ -35,12 +35,12 @@
 
 <style scoped>
 
-.texte {
+.texte, .texte *  {
     text-align: center;
-    left: 50%;
-    transform: translate(-50%,0);
-    position: absolute;
-    top: 50%;
+    /* left: 50%; */
+    /* transform: translate(-50%,0); */
+    /* position: absolute; */
+    /* top: 50%; */
     z-index: 1000;
 }
 
@@ -88,6 +88,11 @@ nuxt-link:hover * {
     padding-bottom: 32px;
     padding-top: 32px;
     max-height: 100vh;
+}
+
+.uf-mono {
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .projet:hover .uf-mono img{
