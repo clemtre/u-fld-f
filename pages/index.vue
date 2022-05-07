@@ -1,12 +1,24 @@
 <template>
   <div>
-    <site-header class="header" 
+    <user-interface
+      :state="state"
+      @stateBio="stateBio"
+      @stateImages="stateImages"
+      @stateText="stateText"
+      @stateDarkMode="stateDarkMode"
+    ></user-interface>
+    <section v-if="state.bio">
+      {{ bio.descriptif }}
+    </section>
+    <!-- <user-interface :state="state"></user-interface> -->
+    <!-- <site-header class="header" 
     :bio="bio" 
     :projetSwitch="projetSwitch"
     :darkSwitch="darkSwitch"
     @listToggle="listToggle"
     @darkToggle="darkToggle"
-     />
+     /> -->
+
     <section class="main">
       <table v-if="!projetSwitch" id="table-main">
         <table-entry
@@ -22,6 +34,7 @@
           v-for="projet in Projets"
           :key="projet.id"
           :projet="projet"
+          :state="state"
           :to="`/projets/${projet.slug}`"
         />
       </section>
@@ -38,34 +51,46 @@ import ProjetCard from '~/components/ProjetCard.vue'
 import SiteFooter from '~/components/SiteFooter.vue'
 
 import { pageMixinWithData } from '~/mixins/page.mixin'
+import UserInterface from '~/components/UserInterface.vue'
 
 export default {
   mixins: [pageMixinWithData],
-
   data() {
     return {
+      state: {
+        bio: false,
+        images: true,
+        text:true,
+        darkMode:true
+      },
       projetSwitch: true,
-      darkSwitch: true,
     }
   },
-  methods:{
-    listToggle : function(){
+  methods: {
+    stateBio: function () {
+      this.state.bio = !this.state.bio
+    },
+    stateImages: function () {
+      this.state.images = !this.state.images
+    },
+        stateText: function () {
+      this.state.text = !this.state.text
+    },
+    listToggle: function () {
       this.projetSwitch = !this.projetSwitch
     },
     // { $colorMode }
-    darkToggle : function(){
-      this.darkSwitch = !this.darkSwitch
+    stateDarkMode: function () {
+      this.state.darkMode = !this.state.darkMode
 
-      // devrait marcher mais non 
+      // devrait marcher mais non
       // this.darkSwitch ? this.$colorMode.preference = 'dark' : 'light'
 
-      if(this.darkSwitch){
+      if (this.state.darkMode) {
         this.$colorMode.preference = 'dark'
-      }
-      else {
+      } else {
         this.$colorMode.preference = 'light'
       }
-      console.log(this.darkSwitch, this.$colorMode.preference)
     },
   },
 
@@ -74,10 +99,8 @@ export default {
     TableEntry,
     ProjetCard,
     SiteFooter,
+    UserInterface,
   },
-
-  
-
 }
 </script>
 
@@ -93,7 +116,7 @@ export default {
 }
 
 .main {
-  margin-top: 64px;
+  margin-top: 128px;
   min-height: 100vh;
 }
 .main:hover {

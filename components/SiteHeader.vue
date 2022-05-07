@@ -19,7 +19,7 @@
         <div class="bio paragraph" v-html="bio.descriptif"></div>
         <!-- <p v-html="bio.network"></p> -->
         <ul>
-          <li>{{bio.mail}}></li>
+          <li>{{ bio.mail }}></li>
           <li>{{ bio.tel }}</li>
           <li>{{ bio.ville }}</li>
         </ul>
