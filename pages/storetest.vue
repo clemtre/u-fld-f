@@ -1,12 +1,11 @@
 <template>
   <div>
 
-      
 
       <ul v-for="projet of Projets" :key="projet.id">
           <li>
               <p>
-                +  {{projet.titre | stripHTML}}
+                + {{projet.titre | stripHTML}}
               </p>
           </li>
           <li>
