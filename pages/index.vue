@@ -8,7 +8,7 @@
       @stateDarkMode="stateDarkMode"
     ></user-interface>
     <section v-if="state.bio">
-      {{ bio.descriptif }}
+      <div v-html="bio.descriptif"></div>
     </section>
     <!-- <user-interface :state="state"></user-interface> -->
     <!-- <site-header class="header" 
@@ -50,21 +50,23 @@ import TableEntry from '~/components/TableEntry.vue'
 import ProjetCard from '~/components/ProjetCard.vue'
 import SiteFooter from '~/components/SiteFooter.vue'
 
-import { pageMixinWithData } from '~/mixins/page.mixin'
 import UserInterface from '~/components/UserInterface.vue'
 
 export default {
-  mixins: [pageMixinWithData],
   data() {
     return {
+      Projets,
       state: {
         bio: false,
         images: true,
-        text:true,
-        darkMode:true
+        text: true,
+        darkMode: true,
       },
       projetSwitch: true,
     }
+  },
+  created() {
+    this.$colorMode.preference = 'dark'
   },
   methods: {
     stateBio: function () {
@@ -73,7 +75,7 @@ export default {
     stateImages: function () {
       this.state.images = !this.state.images
     },
-        stateText: function () {
+    stateText: function () {
       this.state.text = !this.state.text
     },
     listToggle: function () {

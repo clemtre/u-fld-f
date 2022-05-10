@@ -148,7 +148,8 @@ export default {
   },
 
   plugins: [
-    '~/plugins/asset-url.js'
+    '~/plugins/asset-url.js',
+    '~/plugins/stripHTML.js'
   ],
 
   modules: [
