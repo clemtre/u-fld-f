@@ -1,22 +1,13 @@
 import axios from 'axios'
 export const state = () => ({
-	tasks: [],
+	ui: {
+		type : 1
+	},
 	db: []
+
 })
 
 export const mutations = {
-	ADD_TASK(state, task) {
-		state.tasks = [{ content: task, done: false }, ...state.tasks]
-	},
-	REMOVE_TASK(state, task) {
-		state.tasks.splice(state.tasks.indexOf(task), 1)
-	},
-	TOGGLE_TASK(state, task) {
-		task.done = !task.done
-	},
-	SET_USERS(state, data) {
-		state.db = data
-	},
 	SORT_FETCH(state, data){
 		for (const projet of data.Projets.data) {
 				const nomClient = data.Clients.data.find((x) => x.id === projet.client);
