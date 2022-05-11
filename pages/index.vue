@@ -1,15 +1,10 @@
 <template>
   <div>
-    <user-interface
-      :state="state"
-      @stateBio="stateBio"
-      @stateImages="stateImages"
-      @stateText="stateText"
-      @stateDarkMode="stateDarkMode"
-    ></user-interface>
+    <user-interface></user-interface>
+    <!--
     <section v-if="state.bio">
       <div v-html="bio.descriptif"></div>
-    </section>
+    </section> -->
     <!-- <user-interface :state="state"></user-interface> -->
     <!-- <site-header class="header" 
     :bio="bio" 
@@ -19,7 +14,7 @@
     @darkToggle="darkToggle"
      /> -->
 
-    <section class="main">
+    <!-- <section class="main">
       <table v-if="!projetSwitch" id="table-main">
         <table-entry
           v-for="projet in Projets"
@@ -38,7 +33,7 @@
           :to="`/projets/${projet.slug}`"
         />
       </section>
-    </section>
+    </section> -->
 
     <site-footer />
   </div>
@@ -55,44 +50,14 @@ import UserInterface from '~/components/UserInterface.vue'
 export default {
   data() {
     return {
-      Projets,
-      state: {
-        bio: false,
-        images: true,
-        text: true,
-        darkMode: true,
-      },
-      projetSwitch: true,
     }
   },
   created() {
     this.$colorMode.preference = 'dark'
   },
   methods: {
-    stateBio: function () {
-      this.state.bio = !this.state.bio
-    },
-    stateImages: function () {
-      this.state.images = !this.state.images
-    },
-    stateText: function () {
-      this.state.text = !this.state.text
-    },
     listToggle: function () {
       this.projetSwitch = !this.projetSwitch
-    },
-    // { $colorMode }
-    stateDarkMode: function () {
-      this.state.darkMode = !this.state.darkMode
-
-      // devrait marcher mais non
-      // this.darkSwitch ? this.$colorMode.preference = 'dark' : 'light'
-
-      if (this.state.darkMode) {
-        this.$colorMode.preference = 'dark'
-      } else {
-        this.$colorMode.preference = 'light'
-      }
     },
   },
 

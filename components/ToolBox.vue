@@ -20,15 +20,7 @@ export default {
   },
   methods:{
     set : function(arg){
-      const res = this.getName(arg)
-      if(arg === 'darkmode'){
-        if (res.on) {
-        this.$colorMode.preference = 'dark'
-      } else {
-        this.$colorMode.preference = 'light'
-      }
-      }
-      this.$store.commit('SWITCH',res)
+      this.$store.commit('SWITCH',this.getName(arg))
     },
   },
   computed: {
