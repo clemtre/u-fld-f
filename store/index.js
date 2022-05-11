@@ -1,13 +1,27 @@
 import axios from 'axios'
 export const state = () => ({
-	ui: {
-		type : 1
-	},
+	ui: [
+		{nom : 'images', on : true, taille : '90vh'},
+		{nom : 'bio', on : true},
+		{nom : 'clients', on : true},
+		{nom : 'darkmode', on : true}
+	]
+	,
 	db: []
 
 })
 
+export const getters = {
+	getName: (state) => (nom) => {
+		return state.ui.find(thing => thing.nom === nom)
+		
+	},
+}
+
 export const mutations = {
+	SWITCH(state, data){
+		data.on = !data.on
+	},
 	SORT_FETCH(state, data){
 		for (const projet of data.Projets.data) {
 				const nomClient = data.Clients.data.find((x) => x.id === projet.client);
@@ -34,7 +48,6 @@ export const actions = {
 			const Clients = await axios.get('https://porte-secrete.unexploredfields.com/items/Clients')
 			const Images = await axios.get('https://porte-secrete.unexploredfields.com/items/Images?fields=*.*')
 
-			commit('SET_USERS', Projets.data)
 			commit('SORT_FETCH', {Projets : Projets.data, Clients : Clients.data, Images: Images.data})
 		}
 		catch (error) {

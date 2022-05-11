@@ -1,5 +1,5 @@
 
-.dark-mode :is(p, a, span){
+.dark-mode :is(p, a, span, button){
     color: white;
 }
 .dark-mode :is(html, body){
