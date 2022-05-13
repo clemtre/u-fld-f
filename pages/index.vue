@@ -1,6 +1,10 @@
 <template>
   <div>
     <user-interface></user-interface>
+    <p>aller</p>
+  <!-- VARIABILISER CSS -->
+
+
     <!--
     <section v-if="state.bio">
       <div v-html="bio.descriptif"></div>
@@ -40,12 +44,6 @@
 </template>
 
 <script>
-import SiteHeader from '~/components/SiteHeader.vue'
-import TableEntry from '~/components/TableEntry.vue'
-import ProjetCard from '~/components/ProjetCard.vue'
-import SiteFooter from '~/components/SiteFooter.vue'
-
-import UserInterface from '~/components/UserInterface.vue'
 
 export default {
   data() {
@@ -61,13 +59,6 @@ export default {
     },
   },
 
-  components: {
-    SiteHeader,
-    TableEntry,
-    ProjetCard,
-    SiteFooter,
-    UserInterface,
-  },
 }
 </script>
 

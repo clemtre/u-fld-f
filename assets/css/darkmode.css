@@ -10,7 +10,7 @@
 
 
 .light-mode :is(p, a){
-    color: black;
+    color: var(--black);
 }
 
 .light-mode :is(html, body){
