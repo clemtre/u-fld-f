@@ -11,10 +11,8 @@
 </template>
 
 <script>
-import SiteHeader from '~/components/SiteHeader.vue'
-import { pageMixinWithData } from '~/mixins/page.mixin'
+
 export default {
-  mixins: [pageMixinWithData],
   //   props: ['projet'],
   data() {
     return {

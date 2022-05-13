@@ -36,7 +36,6 @@ export default {
 
   buildModules: [
     '@nuxt/image',
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
     '@nuxtjs/color-mode',
 
@@ -55,7 +54,6 @@ export default {
 
   modules: [
     '@nuxt/image',
-    '~/modules/directus',
   ],
 
 }
