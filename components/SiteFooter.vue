@@ -36,6 +36,8 @@ align-self: center ;
 }
 .wrapper {
   width: 100%;
+  position: absolute;
+  bottom: 0;
 
 }
 .el {

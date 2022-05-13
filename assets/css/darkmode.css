@@ -1,10 +1,25 @@
 
 .dark-mode :is(p, a, span, button){
-    color: white;
+    color: var(--white);
 }
 .dark-mode :is(html, body){
-        background-color : #011101 ;
+        background-color : var(--black) ;
       
+}
+
+.dark-mode #ctn-ui {
+    background-color: var(--jaune-uf);
+}
+.light-mode #ctn-ui {
+    background-color: var(--black);
+}
+.dark-mode :is(button){
+    border-color: var(--black);
+    color: var(--black);
+}
+.light-mode :is(button){
+    border-color: var(--white);
+    color: var(--white);
 }
 
 
@@ -14,9 +29,9 @@
 }
 
 .light-mode :is(html, body){
-    background-color : #fff ;
+    background-color : var(--white) ;
   
 }
 
-.light-mode .ufLogo { fill: black; }
-.dark-mode .ufLogo { fill: white; }
+.light-mode .ufLogo { fill: var(--white) }
+.dark-mode .ufLogo { fill: var(--white) }

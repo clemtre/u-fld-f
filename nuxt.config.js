@@ -13,13 +13,9 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
-    ],
-    link: [
-      // exemple d'import
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined' }
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      { rel: 'stylesheet', src: '@/node_modules/normalize.css/normalize.css' }
       // import IBM mono & Libre Baskerville
-
     ],
 
   },

@@ -53,5 +53,6 @@ export const actions = {
 		catch (error) {
 			console.log('error', error)
 		}
+		
 	}
 }

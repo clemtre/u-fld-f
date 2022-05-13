@@ -1,7 +1,9 @@
 <template>
   <div>
     <user-interface></user-interface>
-    <p>aller</p>
+      
+      <br>
+      <p>aller</p>
   <!-- VARIABILISER CSS -->
 
 

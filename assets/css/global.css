@@ -1,15 +1,23 @@
-p,a,li, table,button {
-    font-family: 'Cormorant Garamond';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Libre+Baskerville:ital@0;1&display=swap');
+body {
+  margin: 0;
 }
-/* .paragraph {
-    text-indent: 12px;
-    font-size: 24px;
-    column-count: 2;
-    width: 80vw;
-    height: 300px;
-    padding: 200px;
-    color: black;
-} */
+
+button:hover {
+  cursor: pointer;
+}
+/* buttonr reset */
+button{
+  font-family: 'IBM Plex Mono', monospace;
+  background:none;
+  border-radius: 0;
+  border: 1px solid red;
+
+}
+
+p,a,li, table {
+  font-family: 'Libre Baskerville', serif;
+}
 
 .page-enter-active,
 .page-leave-active {
