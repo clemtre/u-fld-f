@@ -1,6 +1,6 @@
 <template>
   
-  <div id="ctn-ui">
+  <div class="ctn-main" id="ctn-ui">
     <button @click="set('images')">
       images {{ this.getName('images').on ? falsePh : truePh }}
     </button>
@@ -19,7 +19,6 @@
   <style scoped>
     
 #ctn-ui {
-  margin: var(--gutter);
   display: flex;
   align-items: stretch;
   padding: 10px;

@@ -2,6 +2,10 @@
 body {
   margin: 0;
 }
+.ctn-main {
+  width: calc(100vw - var(gutter) * 2);
+  margin: var(--gutter);
+}
 
 button:hover {
   cursor: pointer;

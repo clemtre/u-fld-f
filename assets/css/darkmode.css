@@ -8,7 +8,7 @@
 }
 
 .dark-mode #ctn-ui {
-    background-color: var(--jaune-uf);
+    background-color: var(--jaune);
 }
 .light-mode #ctn-ui {
     background-color: var(--black);

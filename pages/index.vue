@@ -1,5 +1,6 @@
 <template>
   <div>
+    <header-scroll></header-scroll>
     <user-interface></user-interface>
       
       <br>
