@@ -3,7 +3,28 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data(){
+    return{
+      a : 1
+    }
+  },
+  methods: {
+    handleScroll(){
+      this.a += 1
+    console.log(this.a)
+    }
+
+  },
+  beforeMount() {
+    window.addEventListener("scroll",this.handleScroll);
+  },
+  destroyed(){
+    window.removeEventListener("scroll",this.handleScroll);
+
+  }
+  
+}
 </script>
 
 <style scoped>
@@ -13,6 +34,7 @@ img{
     width:100%;
 }
 #headerscroll {
+  overflow-x: hidden;
     background-color: var(--jaune);
 }
 </style>
