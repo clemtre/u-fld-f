@@ -3,15 +3,28 @@
     <header-scroll></header-scroll>
     <user-interface></user-interface>
       
+
+    <section class="ctn-main" v-if="this.getName('bio').on">
+      <div v-html="$store.state.Bio.descriptif"></div>
+    </section> 
       <br>
-      <p>aller</p>
-  <!-- VARIABILISER CSS -->
+<p style="font-size : 40px" class="ctn-main">
 
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
+</p>
 
-    <!--
-    <section v-if="state.bio">
-      <div v-html="bio.descriptif"></div>
-    </section> -->
     <!-- <user-interface :state="state"></user-interface> -->
     <!-- <site-header class="header" 
     :bio="bio" 
@@ -47,6 +60,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -61,6 +75,11 @@ export default {
       this.projetSwitch = !this.projetSwitch
     },
   },
+    computed: {
+    ...mapGetters({
+      getName: 'getName',
+    }),
+  }
 
 }
 </script>

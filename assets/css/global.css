@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Libre+Baskerville:ital@0;1&display=swap');
 body {
   margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+
 }
 .ctn-main {
-  width: calc(100vw - var(gutter) * 2);
+  overflow-x: hidden;
+  box-sizing: border-box;
+  width: calc(100vw - ( var(--gutter) * 2 ));
   margin: var(--gutter);
 }
 
@@ -32,7 +37,7 @@ p,a,li, table {
   opacity: 0;
 }
 
-.projet:hover .titre, a:hover, button:hover{
+.projet:hover .titre, a:hover{
   font-style: italic;
 }
 

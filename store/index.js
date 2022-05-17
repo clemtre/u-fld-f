@@ -7,7 +7,8 @@ export const state = () => ({
 		{nom : 'darkmode', on : true}
 	]
 	,
-	db: []
+	Projets: [],
+	Bio: [],
 
 })
 
@@ -37,7 +38,8 @@ export const mutations = {
 					}
 				}
 		}
-		state.db = data.Projets.data
+		state.Bio = data.Bio.data
+		state.Projets = data.Projets.data
 	}
 
 }
@@ -47,8 +49,9 @@ export const actions = {
 			const Projets = await axios.get('https://porte-secrete.unexploredfields.com/items/Projets')
 			const Clients = await axios.get('https://porte-secrete.unexploredfields.com/items/Clients')
 			const Images = await axios.get('https://porte-secrete.unexploredfields.com/items/Images?fields=*.*')
+			const Bio = await axios.get('https://porte-secrete.unexploredfields.com/items/bio')
 
-			commit('SORT_FETCH', {Projets : Projets.data, Clients : Clients.data, Images: Images.data})
+			commit('SORT_FETCH', {Projets : Projets.data, Clients : Clients.data, Images: Images.data, Bio: Bio.data})
 		}
 		catch (error) {
 			console.log('error', error)

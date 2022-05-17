@@ -2,16 +2,16 @@
   
   <div class="ctn-main" id="ctn-ui">
     <button @click="set('images')">
-      images {{ this.getName('images').on ? falsePh : truePh }}
+      images {{ this.getName('images').on ? truePh : falsePh }}
     </button>
     <button @click="set('bio')">
-      bio {{ this.getName('bio').on ? falsePh : truePh }}
+      bio {{ this.getName('bio').on ? truePh : falsePh }}
     </button>
     <button @click="set('clients')">
-      images {{ this.getName('clients').on ? falsePh : truePh }}
+      images {{ this.getName('clients').on ? truePh : falsePh }}
     </button>
     <button @click="set('darkmode')">
-      darkmode {{ this.getName('darkmode').on ? falsePh : truePh }}
+      darkmode {{ this.getName('darkmode').on ? truePh : falsePh }}
     </button>
   </div>
 </template>
@@ -21,9 +21,11 @@
 #ctn-ui {
   display: flex;
   align-items: stretch;
-  padding: 10px;
-  gap: 10px;
-
+  padding: var(--gutter);
+  gap: var(--gutter);
+  position: sticky;
+  margin-top: calc(-1 * var(--gutter));
+  top:var(--gutter)
 }
 button {
   
