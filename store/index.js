@@ -33,6 +33,9 @@ export const mutations = {
 	SWITCH(state, data){
 		data.on = !data.on
 	},
+	DARKMODE_INIT(state,data){
+		data = this.$colorMode.preference
+	},
 	SORT_FETCH(state, data){
 		for (const projet of data.Projets.data) {
 				const nomClient = data.Clients.data.find((x) => x.id === projet.client);
@@ -67,6 +70,9 @@ export const actions = {
 		catch (error) {
 			console.log('error', error)
 		}
+		console.log(this.$colorMode.preference)
+		// commit('DARKMODE_INIT', state.ui.)
+
 		
 	}
 }

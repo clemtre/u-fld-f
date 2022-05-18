@@ -66,9 +66,9 @@ export default {
       const res = this.getName(arg)
       if (arg === 'darkmode') {
         if (res.on) {
-          this.$colorMode.preference = 'dark'
-        } else {
           this.$colorMode.preference = 'light'
+          } else {
+          this.$colorMode.preference = 'dark'
         }
       }
       this.$store.commit('SWITCH', res)
