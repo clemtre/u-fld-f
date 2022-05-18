@@ -37,11 +37,31 @@ p,a,li, table {
   opacity: 0;
 }
 
-.projet:hover .titre, a:hover{
+/* .projet:hover .titre, a:hover{
   font-style: italic;
-}
+} */
 
 .paragraph p:not(:first-child) {
   text-indent: 24px;
+}
+.paragraph > p {
+  margin-top: 0;
+  margin-bottom: calc(var(--gutter) * 3);
+  max-width: 800px;
+}
+.paragraph {
+  display: flex;
 
+}
+hr {
+  width: 100%;
+  border: none;
+  margin: 0;
+}
+.light-mode hr{
+  border-top: 1px dotted var(--noir);
+}
+
+.dark-mode hr{
+  border-top: 1px dotted var(--jaune);
 }

@@ -5,55 +5,18 @@
       
 
     <section class="ctn-main" v-if="this.getName('bio').on">
-      <div v-html="$store.state.Bio.descriptif"></div>
+      <div class="paragraph" v-html="$store.state.Bio.descriptif"></div>
     </section> 
       <br>
-<p style="font-size : 40px" class="ctn-main">
-
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur adipisci aperiam vitae? Voluptatem facere id incidunt iste eaque velit sint? Sequi optio quidem nesciunt, quasi aspernatur tenetur doloremque voluptatem magnam.
-</p>
-
-    <!-- <user-interface :state="state"></user-interface> -->
-    <!-- <site-header class="header" 
-    :bio="bio" 
-    :projetSwitch="projetSwitch"
-    :darkSwitch="darkSwitch"
-    @listToggle="listToggle"
-    @darkToggle="darkToggle"
-     /> -->
-
-    <!-- <section class="main">
-      <table v-if="!projetSwitch" id="table-main">
-        <table-entry
-          v-for="projet in Projets"
-          :key="projet.id"
-          :projet="projet"
-          :to="`/projets/${projet.slug}`"
-        />
-      </table>
-      <section v-if="projetSwitch">
+      <section v-if="this.getName('projets').on">
         <projet-card
           class="projet"
-          v-for="projet in Projets"
+          v-for="projet in $store.state.Projets"
           :key="projet.id"
           :projet="projet"
-          :state="state"
           :to="`/projets/${projet.slug}`"
         />
       </section>
-    </section> -->
 
     <site-footer />
   </div>
@@ -130,5 +93,13 @@ table {
 }
 body {
   background-color: black;
+}
+.projet {
+  box-sizing: border-box;
+  border: 0px solid var(--jaune);
+  transition: .1s;
+}
+.projet:hover {
+  /* border: var(--gutter) solid var(--jaune); */
 }
 </style>

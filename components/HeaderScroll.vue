@@ -33,7 +33,6 @@ export default {
         // this.hidden = true
         // window.removeEventListener('scroll', this.handleScroll)
       // }
-      console.log(this.hauteur)
     },
   },
   beforeMount() {
@@ -44,7 +43,6 @@ export default {
     else {
       // this.hidden = true
     }
-    console.log(window.top.scrollY)
   },
   // destroyed() {
   //   window.removeEventListener('scroll', this.handleScroll)

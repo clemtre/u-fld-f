@@ -1,10 +1,11 @@
 import axios from 'axios'
 export const state = () => ({
 	ui: [
-		{nom : 'images', on : true, taille : '90vh'},
+		{nom : 'images', on : true, val : 100},
 		{nom : 'bio', on : true},
 		{nom : 'clients', on : true},
-		{nom : 'darkmode', on : true}
+		{nom : 'darkmode', on : true},
+		{nom : 'projets', on : true}
 	]
 	,
 	Projets: [],
@@ -19,7 +20,16 @@ export const getters = {
 	},
 }
 
+const uiIncrSize = 10 
+
 export const mutations = {
+	INCR(state, data){
+		data.val < 100 ? data.val += uiIncrSize : data.val = data.val
+	},
+	DECR(state, data){
+		data.val > 0 ? data.val -= uiIncrSize : data.val = data.val
+
+	},
 	SWITCH(state, data){
 		data.on = !data.on
 	},
@@ -39,7 +49,7 @@ export const mutations = {
 				}
 		}
 		state.Bio = data.Bio.data
-		state.Projets = data.Projets.data
+		state.Projets = data.Projets.data.reverse().filter(projet => projet.featured  === true)
 	}
 
 }
@@ -50,6 +60,7 @@ export const actions = {
 			const Clients = await axios.get('https://porte-secrete.unexploredfields.com/items/Clients')
 			const Images = await axios.get('https://porte-secrete.unexploredfields.com/items/Images?fields=*.*')
 			const Bio = await axios.get('https://porte-secrete.unexploredfields.com/items/bio')
+
 
 			commit('SORT_FETCH', {Projets : Projets.data, Clients : Clients.data, Images: Images.data, Bio: Bio.data})
 		}

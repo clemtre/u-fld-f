@@ -1,44 +1,41 @@
 <template >
   <!-- Comment pointer vers projet.slug-1 et projet.slug+1 ???  -->
-  <nuxt-link :to="`/projets/${projet.slug}`">
-    <div v-if="state.text" class="texte">
-      <uf-logo class="uf-mono" size="48px" color="" />
-      <span class="titre" v-html="projet.titre"></span>
-      <span
-        class="sous-titre"
-        v-html="projet.date + ' • ' + projet.client.nom"
-      ></span>
-    </div>
+  <nuxt-link :to="`/projets/${projet.slug}`" v-if="projet.entete">
     <img
-      v-if="projet.entete && state.images"
-      class="img-projet"
+      v-bind:style="{ width: `${this.getName('images').val}%` }"
+      v-if="this.getName('images').on"
       :src="url + projet.entete + qual"
       alt=""
     />
+    <div class="texte" v-bind:class="{ 'texteIndex' : isIndex }">
+      <p class="titre">{{ projet.titre | stripHTML }}</p>
+
+      <p class="sous-titre" v-html="projet.date + ' • ' + projet.nomClient"></p>
+      <uf-logo class="uf-mono" size="32px" color="" />
+    </div>
+    <!-- <hr /> -->
   </nuxt-link>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      url: 'https://porte-secrete.unexploredfields.com/assets/',
-      qual: '?quality=80&width=1920&withoutEnlargement',
-    }
-  },
-  props: ['projet', 'state'],
-}
-</script>
-
 <style scoped>
-.texte,
-.texte * {
+.texteIndex p {
+  color: red !important;
+}
+.uf-mono {
+  margin-top: calc(var(--gutter) * 2 - 2px);
+  transform: translateY(2px);
+}
+.texte {
+  margin-top: var(--gutter);
+  margin-bottom: calc(var(--gutter) * 4);
   text-align: center;
-  /* left: 50%; */
-  /* transform: translate(-50%,0); */
-  /* position: absolute; */
-  /* top: 50%; */
   z-index: 1000;
+}
+
+nuxt-link,
+a {
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
 }
 
 nuxt-link:hover {
@@ -49,12 +46,17 @@ nuxt-link:hover * {
   pointer-events: all;
 }
 
+a:hover .titre {
+  text-decoration: underline;
+}
+
 .titre {
+  margin: 0;
   text-align: center;
   font-size: 32px;
-  width: fit-content;
 }
 .sous-titre {
+  margin: 0;
   font-size: 18px;
 }
 
@@ -69,40 +71,43 @@ nuxt-link:hover * {
   width: 100%;
   pointer-events: none;
   flex-direction: column;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  margin-top: 0;
+  margin-bottom: 0;
+  /* margin-left: 50%;
+  transform: translateX(-50%); */
 }
 
-.img-projet {
-  padding-bottom: 32px;
-  padding-top: 32px;
+img {
+  padding-bottom: var(--gutter);
+  /* padding-top: var(--gutter); */
   max-height: 100vh;
-}
-
-.uf-mono {
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-
-.projet:hover .uf-mono img {
-  fill: aqua;
-}
-
-.projet:hover .img-projet {
-  /* transform: scale(.8); */
-}
-
-.img-projet,
-.titre {
-  transform-origin: top;
-
-  transition: all 0.2s ease-in-out;
-  z-index: 10 !important;
-}
-
-.sous-titre {
-  max-width: 80%;
+  max-width: 100%;
 }
 </style>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  data() {
+    return {
+      isIndex: false,
+      thresholdIndex: 50,
+      url: 'https://porte-secrete.unexploredfields.com/assets/',
+      qual: '?quality=80&width=1920&withoutEnlargement',
+    }
+  },
+  props: ['projet'],
+  // watch:{
+  //   isIndex()
+  // },
+  computed: {
+    isIndexCheck : function() {
+      return this.isIndex = this.getName('images').val < this.thresholdIndex
+    },
+    ...mapGetters({
+      getName: 'getName',
+    }),
+  },
+}
+</script>
