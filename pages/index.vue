@@ -15,7 +15,7 @@
           :key="projet.id"
           :projet="projet"
           :to="`/projets/${projet.slug}`"
-        />
+        ></projet-card>
       </section>
 
     <site-footer />

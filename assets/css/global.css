@@ -56,8 +56,8 @@ p,a,li, table {
   
 }
 .paragraph {
-  margin-top: calc(var(--gutter)*8);
-  margin-bottom: calc(var(--gutter)*8);
+  margin-top: calc(var(--gutter)*4);
+  margin-bottom: calc(var(--gutter)*4);
   width: 100%;
   max-width: 800px;
   margin-left: 50%;

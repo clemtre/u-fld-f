@@ -38,6 +38,7 @@ p {
 .wrapper {
   width: 100%;
   border-top: 1px solid var(--blanc);
+  margin-top: calc(var(--gutter))
 }
 .el {
   justify-content: flex-end;

@@ -21,14 +21,13 @@ export const getters = {
 }
 
 const uiIncrSize = 10 
-
+function clamp(val, min, max) {
+    return val > max ? max : val < min ? min : val;
+}
 export const mutations = {
 	INCR(state, data){
-		data.val < 100 ? data.val += uiIncrSize : data.val = data.val
-	},
-	DECR(state, data){
-		data.val > 0 ? data.val -= uiIncrSize : data.val = data.val
-
+		const val = uiIncrSize * data[1]
+		data[0].val = clamp(data[0].val+val,10,100)
 	},
 	SWITCH(state, data){
 		data.on = !data.on

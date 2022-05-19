@@ -21,7 +21,7 @@
       bio {{ this.getName('bio').on ? truePh : falsePh }}
     </button>
     <button @click="set('clients')">
-      images {{ this.getName('clients').on ? truePh : falsePh }}
+      clients {{ this.getName('clients').on ? truePh : falsePh }}
     </button>
     <button @click="set('darkmode')">
       night {{ this.getName('darkmode').on ? truePh : falsePh }}
@@ -73,8 +73,13 @@ export default {
       }
       this.$store.commit('SWITCH', res)
     },
-    incr: function (arg) {this.$store.commit('INCR', this.getName(arg))},
-    decr: function (arg) {this.$store.commit('DECR', this.getName(arg))}
+    incr: function (arg) {
+      this.$store.commit('INCR', [this.getName(arg),1])
+      !this.getName('images').on ? this.$store.commit('SWITCH', this.getName('images')) : null
+    },
+    decr: function (arg) {this.$store.commit('INCR', [this.getName(arg),-1])
+      !this.getName('images').on ? this.$store.commit('SWITCH', this.getName('images')) : null
+    }
   },
   computed: {
     ...mapGetters({
