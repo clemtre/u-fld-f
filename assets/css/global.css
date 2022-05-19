@@ -1,3 +1,4 @@
+@import url('~/static/uf-font/style.css');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Libre+Baskerville:ital@0;1&display=swap');
 body {
   margin: 0;
@@ -41,16 +42,26 @@ p,a,li, table {
   font-style: italic;
 } */
 
+/* .paragraph p:first-child::first-letter{
+  font-size: 38px;
+  line-height: 0;
+} */
+
 .paragraph p:not(:first-child) {
   text-indent: 24px;
 }
 .paragraph > p {
-  margin-top: 0;
-  margin-bottom: calc(var(--gutter) * 3);
-  max-width: 800px;
+  margin: 0;
+  line-height: 1.4;
+  
 }
 .paragraph {
-  display: flex;
+  margin-top: calc(var(--gutter)*8);
+  margin-bottom: calc(var(--gutter)*8);
+  width: 100%;
+  max-width: 800px;
+  margin-left: 50%;
+  transform: translateX(-50%);
 
 }
 hr {

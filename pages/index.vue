@@ -6,8 +6,8 @@
 
     <section class="ctn-main" v-if="this.getName('bio').on">
       <div class="paragraph" v-html="$store.state.Bio.descriptif"></div>
-    </section> 
-      <br>
+    </section>
+    <hr>
       <section v-if="this.getName('projets').on">
         <projet-card
           class="projet"

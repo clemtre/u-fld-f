@@ -26,7 +26,7 @@ export default {}
   height: 16px;
   width: 100%;
 }
-* {
+p,a {
   color: var(--blanc);
   font-size: 24px;
   text-align: right;

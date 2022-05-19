@@ -21,13 +21,7 @@ export default {
   methods: {
     handleScroll() {
       // if(this.hauteur > 0){
-        if(window.top.scrollY < window.innerHeight){
-
           this.hauteur = 100 - (window.top.scrollY / window.innerHeight) * 100
-        }
-        else (
-          this.hauteur = 0
-        )
       // }
       // else {
         // this.hidden = true
@@ -62,6 +56,7 @@ img {
   object-fit: contain;
 }
 #headerscroll {
+  overflow-y: hidden;
   pointer-events: none;
   width: 100%;
   position: fixed;

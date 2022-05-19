@@ -15,6 +15,7 @@ export default {
     link: [
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       { rel: 'stylesheet', src: '@/node_modules/normalize.css/normalize.css' }
+      
       // import IBM mono & Libre Baskerville
     ],
 
