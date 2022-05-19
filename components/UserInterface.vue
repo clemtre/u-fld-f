@@ -26,18 +26,33 @@
     <button @click="set('darkmode')">
       night {{ this.getName('darkmode').on ? truePh : falsePh }}
     </button>
+    <div id="ph-ui"></div>
   </div>
 </template>
 
   <style scoped>
-
+.dark-mode #ph-ui {
+    background-color: var(--jaune);
+}
+.light-mode #ph-ui {
+    background-color: var(--noir);
+}
+#ph-ui{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  z-index: -10000;
+}
 .no-gap {
   margin-left: calc(var(--gutter) * -1);
   border-left: none;
 }
-
+button {
+  }
 #ctn-ui {
-  z-index: 99999;
+  z-index: 10000;
   display: flex;
   align-items: stretch;
   padding: var(--gutter);
@@ -73,6 +88,7 @@ export default {
       }
       this.$store.commit('SWITCH', res)
     },
+
     incr: function (arg) {
       this.$store.commit('INCR', [this.getName(arg),1])
       !this.getName('images').on ? this.$store.commit('SWITCH', this.getName('images')) : null

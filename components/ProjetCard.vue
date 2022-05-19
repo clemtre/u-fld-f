@@ -108,11 +108,12 @@ a:hover .titre {
 }
 
 .ctn-projet {
+  pointer-events: all;
   display: flex;
   justify-content: center;
   width: 100%;
   pointer-events: none;
-  flex-direction: column;
+  flex-direction: column-reverse;
   margin-top: 0;
   margin-bottom: 0;
   /* margin-left: 50%;
@@ -122,7 +123,7 @@ a:hover .titre {
   flex-direction: row;
   justify-content: space-between;
   width: calc(100% - var(--gutter)*2);
-  margin-left: var(gutter);
+  margin-left: var(--gutter);
 
 }
 

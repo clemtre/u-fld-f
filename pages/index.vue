@@ -98,6 +98,7 @@ body {
   box-sizing: border-box;
   border: 0px solid var(--jaune);
   transition: .1s;
+  pointer-events: none;
 }
 .projet:hover {
   /* border: var(--gutter) solid var(--jaune); */

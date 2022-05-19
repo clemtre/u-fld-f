@@ -7,12 +7,7 @@
       
 }
 
-.dark-mode #ctn-ui {
-    background-color: var(--jaune);
-}
-.light-mode #ctn-ui {
-    background-color: var(--noir);
-}
+
 .dark-mode :is(button){
     border-color: var(--noir);
     color: var(--noir);

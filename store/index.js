@@ -1,11 +1,11 @@
 import axios from 'axios'
 export const state = () => ({
 	ui: [
-		{nom : 'images', on : true, val : 100},
-		{nom : 'bio', on : true},
-		{nom : 'clients', on : true},
-		{nom : 'darkmode', on : true},
-		{nom : 'projets', on : true}
+		{ nom: 'images', on: true, val: 100 },
+		{ nom: 'bio', on: true },
+		{ nom: 'clients', on: true },
+		{ nom: 'darkmode', on: true },
+		{ nom: 'projets', on: true }
 	]
 	,
 	Projets: [],
@@ -16,42 +16,42 @@ export const state = () => ({
 export const getters = {
 	getName: (state) => (nom) => {
 		return state.ui.find(thing => thing.nom === nom)
-		
+
 	},
 }
 
-const uiIncrSize = 10 
+const uiIncrSize = 10
 function clamp(val, min, max) {
-    return val > max ? max : val < min ? min : val;
+	return val > max ? max : val < min ? min : val;
 }
 export const mutations = {
-	INCR(state, data){
+	INCR(state, data) {
 		const val = uiIncrSize * data[1]
-		data[0].val = clamp(data[0].val+val,10,100)
+		data[0].val = clamp(data[0].val + val, 10, 100)
 	},
-	SWITCH(state, data){
+	SWITCH(state, data) {
 		data.on = !data.on
 	},
-	DARKMODE_INIT(state,data){
+	DARKMODE_INIT(state, data) {
 		data = this.$colorMode.preference
 	},
-	SORT_FETCH(state, data){
+	SORT_FETCH(state, data) {
 		for (const projet of data.Projets.data) {
-				const nomClient = data.Clients.data.find((x) => x.id === projet.client);
-				projet.nomClient = nomClient.nom;
-				if (projet.medias.length) {
-					for (let media = 0; media < projet.medias.length; media++) {
-						const imageRes = data.Images.data.find((x) => x.id === projet.medias[media]);
-						if (imageRes) {
-							projet.medias[media] = imageRes.images.map(
-								(x) => x.directus_files_id
-							);
-						}
+			const nomClient = data.Clients.data.find((x) => x.id === projet.client);
+			projet.nomClient = nomClient.nom;
+			if (projet.medias.length) {
+				for (let media = 0; media < projet.medias.length; media++) {
+					const imageRes = data.Images.data.find((x) => x.id === projet.medias[media]);
+					if (imageRes) {
+						projet.medias[media] = imageRes.images.map(
+							(x) => x.directus_files_id
+						);
 					}
 				}
+			}
 		}
 		state.Bio = data.Bio.data
-		state.Projets = data.Projets.data.reverse().filter(projet => projet.featured  === true)
+		state.Projets = data.Projets.data.filter(projet => projet.featured === true)
 	}
 
 }
@@ -64,7 +64,7 @@ export const actions = {
 			const Bio = await axios.get('https://porte-secrete.unexploredfields.com/items/bio')
 
 
-			commit('SORT_FETCH', {Projets : Projets.data, Clients : Clients.data, Images: Images.data, Bio: Bio.data})
+			commit('SORT_FETCH', { Projets: Projets.data, Clients: Clients.data, Images: Images.data, Bio: Bio.data })
 		}
 		catch (error) {
 			console.log('error', error)
@@ -72,6 +72,6 @@ export const actions = {
 		console.log(this.$colorMode.preference)
 		// commit('DARKMODE_INIT', state.ui.)
 
-		
+
 	}
 }
