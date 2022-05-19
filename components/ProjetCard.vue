@@ -1,5 +1,4 @@
 <template >
-  <!-- Comment pointer vers projet.slug-1 et projet.slug+1 ???  -->
   <nuxt-link :to="`/projets/${projet.slug}`" v-if="projet.entete">
     <img
       v-bind:style="{ width: `${this.getName('images').val}%` }"
@@ -7,7 +6,7 @@
       :src="url + projet.entete + qual"
       alt=""
     />
-    <div class="texte" v-bind:class="{ 'texteIndex' : isIndex }">
+    <div class="texte" v-bind:class="{ 'texteIndex' : isIndexCheck }">
       <p class="titre">{{ projet.titre | stripHTML }}</p>
 
       <p class="sous-titre" v-html="projet.date + ' • ' + projet.nomClient"></p>
@@ -16,6 +15,30 @@
     <!-- <hr /> -->
   </nuxt-link>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  data() {
+    return {
+      isIndex: false,
+      thresholdIndex: 50,
+      url: 'https://porte-secrete.unexploredfields.com/assets/',
+      qual: '?quality=80&width=1920&withoutEnlargement',
+    }
+  },
+  props: ['projet'],
+  computed: {
+    isIndexCheck : function() {
+      return this.getName('images').val < this.thresholdIndex
+    },
+    ...mapGetters({
+      getName: 'getName',
+    }),
+  },
+}
+</script>
 <style scoped>
 .texteIndex p {
   color: red !important;
@@ -86,30 +109,3 @@ img {
   max-width: 100%;
 }
 </style>
-
-<script>
-import { mapGetters } from 'vuex'
-
-export default {
-  data() {
-    return {
-      isIndex: false,
-      thresholdIndex: 50,
-      url: 'https://porte-secrete.unexploredfields.com/assets/',
-      qual: '?quality=80&width=1920&withoutEnlargement',
-    }
-  },
-  props: ['projet'],
-  // watch:{
-  //   isIndex()
-  // },
-  computed: {
-    isIndexCheck : function() {
-      return this.isIndex = this.getName('images').val < this.thresholdIndex
-    },
-    ...mapGetters({
-      getName: 'getName',
-    }),
-  },
-}
-</script>
