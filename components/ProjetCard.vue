@@ -1,7 +1,7 @@
 <template >
-  <nuxt-link :to="`/projets/${projet.slug}`" v-if="projet.entete">
+  <nuxt-link :to="projet.slug" v-if="projet.entete">
     <div class="ctn-projet" v-bind:class="{ 'projetIndex' : isIndexCheck || !this.getName('images').on}">
-    <img
+    <nuxt-img
       v-bind:style="{ width: `${this.getName('images').val}%` }"
       v-if="this.getName('images').on"
       :src="`${url}${!isPortrait ? projet.entete : projet.entete_portrait}${qual}`"
@@ -26,7 +26,7 @@ export default {
     return {
       isIndex: false,
       thresholdIndex: 50,
-      url: 'https://porte-secrete.unexploredfields.com/assets/',
+      url: `${this.$config.apiUrl}assets/`,
       qual: '?quality=80&width=1920&withoutEnlargement',
     }
   },

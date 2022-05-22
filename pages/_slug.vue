@@ -2,14 +2,13 @@
   <div>
     <img
       class="entete"
-      :src="`https://porte-secrete.unexploredfields.com/assets/${
+      :src="`${url}${
         !isPortrait ? projet.entete : projet.entete_portrait
-      }?width=1920`"
+      }${qual}`"
       alt=""
     />
       <p class="titre">{{projet.titre}}</p>
 
-    <!-- <span class="titre">{{ projet.titre | stripHTML }}</span> -->
     <p class="meta" v-html="projet.date + ' • ' + projet.nomClient"></p>
     <p class="meta">{{ projet.credits }}</p>
     <p class="paragraph" v-html="projet.corps"></p>
@@ -18,7 +17,7 @@
         v-for="(media, j) in mediaArr"
         :key="j"
         v-bind:class="`serie-${mediaArr.length}`"
-        :src="`https://porte-secrete.unexploredfields.com/assets/${media.disk}`"
+        :src="`${url}${media.disk}${qual}`"
       />
     </div>
     <site-footer></site-footer>
@@ -30,7 +29,10 @@ export default {
   data() {
     return {
       projet: {},
-      isPortrait: true
+      isPortrait: true,
+      url: `${this.$config.apiUrl}assets/`,
+      qual: '?quality=80&width=1920&withoutEnlargement',
+
     }
   },
   mounted() {
@@ -38,7 +40,7 @@ export default {
 
         window.addEventListener('resize', this.isPortraitCheck);
     this.projet = this.$store.state.Projets.find(
-      (x) => x.slug === 'tarik'
+      (x) => x.slug === this.$route.params.slug
     )
   },
    unmounted() {

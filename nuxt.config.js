@@ -1,4 +1,18 @@
 export default {
+  env: {
+    apiUrl: process.env.API_URL,
+    baseUrl: process.env.BASE_URL,
+    // NODE_ENV: process.env.NODE_ENV
+  },
+  publicRuntimeConfig: {
+    apiUrl: process.env.API_URL,
+    baseUrl: process.env.BASE_URL
+  },
+  privateRuntimeConfig: {
+    apiUrl: process.env.API_URL,
+    baseUrl: process.env.BASE_URL
+  },
+
   target: 'static',
 
   head: {
@@ -38,18 +52,16 @@ export default {
 
   ],
 
+  image: {
+    domains: [process.env.DOMAIN, `${process.env.DOMAIN}*`],
+  },
+
   components: true,
 
-  publicRuntimeConfig: {
-    assetUrl: process.env.DIRECTUS_URL
-  },
 
   plugins: [
     '~/plugins/asset-url.js',
     '~/plugins/stripHTML.js'
   ],
 
-  buildModules: [
-    '@nuxt/image',
-  ]
 }

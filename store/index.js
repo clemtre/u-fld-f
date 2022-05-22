@@ -84,11 +84,11 @@ export const mutations = {
 export const actions = {
 	async nuxtServerInit({ commit }) {
 		try {
-			const Projets = await axios.get('https://porte-secrete.unexploredfields.com/items/Projets?fields=*.*')
-			const Clients = await axios.get('https://porte-secrete.unexploredfields.com/items/Clients')
-			const Images = await axios.get('https://porte-secrete.unexploredfields.com/items/Images?fields=*.*')
-			const Bio = await axios.get('https://porte-secrete.unexploredfields.com/items/bio')
-			const Files = await axios.get('https://porte-secrete.unexploredfields.com/files')
+			const Projets = await axios.get(`${this.$config.apiUrl}items/Projets?fields=*.*`)
+			const Clients = await axios.get(`${this.$config.apiUrl}items/Clients`)
+			const Images = await axios.get(`${this.$config.apiUrl}items/Images?fields=*.*`)
+			const Bio = await axios.get(`${this.$config.apiUrl}items/bio`)
+			const Files = await axios.get(`${this.$config.apiUrl}files`)
 
 
 			commit('SORT_FETCH', { Projets: Projets.data, Clients: Clients.data, Images: Images.data, Bio: Bio.data, Files: Files.data })

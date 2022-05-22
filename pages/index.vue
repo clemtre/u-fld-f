@@ -15,7 +15,6 @@
           :key="projet.id"
           :projet="projet"
           :isPortrait="isPortrait"
-          :to="`/projets/${projet.slug}`"
         ></projet-card>
       </section>
 
@@ -35,8 +34,8 @@ export default {
   created() {
     if(process.client){
       this.isPortrait = window.innerWidth < window.innerHeight
+      // this.$colorMode.preference = 'dark'
     }
-    this.$colorMode.preference = 'dark'
 
   },
   methods: {
