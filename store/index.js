@@ -6,8 +6,8 @@ export const state = () => ({
 		{ nom: 'clients', on: true },
 		{ nom: 'darkmode', on: true },
 		{ nom: 'projets', on: true }
-	]
-	,
+	],
+	// isPortrait: window.innerWidth < window.innerHeight || false,
 	Projets: [],
 	Bio: [],
 
@@ -37,39 +37,69 @@ export const mutations = {
 	},
 	SORT_FETCH(state, data) {
 		for (const projet of data.Projets.data) {
-			const nomClient = data.Clients.data.find((x) => x.id === projet.client);
-			projet.nomClient = nomClient.nom;
+
+			projet.titre = projet.titre.replace('<p>', "").replace('</p>', "")
+
+			const nomClient = data.Clients.data.find((x) => x.id === projet.client.nom);
+			const enteteFix = data.Files.data.find((x) => x.id === projet.entete);
+			const entete_portraitFix = data.Files.data.find((x) => x.id === projet.entete_portrait);
+
+			projet.nomClient = projet.client.nom;
+			projet.entete = projet.entete.filename_disk
+			projet.entete_portrait = projet.entete_portrait.filename_disk
+
+			projet.medias_CLEAN = []
+			let countMedia = 0
+
+
+			// console.log(projet.titre, projet.medias.length ? "c'est bien" : "Y'A PAS D'IMAGES !!!")
+
 			if (projet.medias.length) {
-				for (let media = 0; media < projet.medias.length; media++) {
-					const imageRes = data.Images.data.find((x) => x.id === projet.medias[media]);
+				for(const media of projet.medias){
+					const imageRes = data.Images.data.find((x) => x.id === parseInt(media.item,10));
+					for(const imageIndiv of imageRes.images){
+						const imgMediasFix = data.Files.data.find((x) => x.id === imageIndiv.directus_files_id)
+						// console.log(imgMediasFix.filename_disk)
+						imageIndiv.disk = imgMediasFix.filename_disk
+					}
+					// console.log(imageRes)
+					projet.medias_CLEAN[countMedia] = imageRes.images
+					// projet.medias_CLEAN[countMedia].directus_files_id = imgMediasFix.filename_disk
+					countMedia ++
+				}
+				for (const media of projet.medias) {
+					const imageRes = data.Images.data.find((x) => x.Images_id === parseInt(media.item,10));
+					// console.log(media)
 					if (imageRes) {
-						projet.medias[media] = imageRes.images.map(
-							(x) => x.directus_files_id
-						);
+						// console.log(imageRes)
 					}
 				}
 			}
 		}
 		state.Bio = data.Bio.data
-		state.Projets = data.Projets.data.filter(projet => projet.featured === true)
+		state.Projets = data.Projets.data.filter(projet => projet.featured === true).reverse()
 	}
 
 }
 export const actions = {
 	async nuxtServerInit({ commit }) {
 		try {
-			const Projets = await axios.get('https://porte-secrete.unexploredfields.com/items/Projets')
+			const Projets = await axios.get('https://porte-secrete.unexploredfields.com/items/Projets?fields=*.*')
 			const Clients = await axios.get('https://porte-secrete.unexploredfields.com/items/Clients')
 			const Images = await axios.get('https://porte-secrete.unexploredfields.com/items/Images?fields=*.*')
 			const Bio = await axios.get('https://porte-secrete.unexploredfields.com/items/bio')
+			const Files = await axios.get('https://porte-secrete.unexploredfields.com/files')
 
 
-			commit('SORT_FETCH', { Projets: Projets.data, Clients: Clients.data, Images: Images.data, Bio: Bio.data })
+			commit('SORT_FETCH', { Projets: Projets.data, Clients: Clients.data, Images: Images.data, Bio: Bio.data, Files: Files.data })
 		}
 		catch (error) {
 			console.log('error', error)
 		}
-		console.log(this.$colorMode.preference)
+		// console.log(this.$colorMode.preference)
+
+
+
 		// commit('DARKMODE_INIT', state.ui.)
 
 

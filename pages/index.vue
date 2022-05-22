@@ -8,12 +8,13 @@
       <div class="paragraph" v-html="$store.state.Bio.descriptif"></div>
     </section>
     <hr>
-      <section v-if="this.getName('projets').on">
+      <section class="main-projet-ctn" v-if="this.getName('projets').on">
         <projet-card
           class="projet"
           v-for="projet in $store.state.Projets"
           :key="projet.id"
           :projet="projet"
+          :isPortrait="isPortrait"
           :to="`/projets/${projet.slug}`"
         ></projet-card>
       </section>
@@ -28,10 +29,15 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      isPortrait : false
     }
   },
   created() {
+    if(process.client){
+      this.isPortrait = window.innerWidth < window.innerHeight
+    }
     this.$colorMode.preference = 'dark'
+
   },
   methods: {
     listToggle: function () {

@@ -38,7 +38,7 @@ export default {
 
         window.addEventListener('resize', this.isPortraitCheck);
     this.projet = this.$store.state.Projets.find(
-      (x) => x.slug === this.$route.params.slug
+      (x) => x.slug === 'tarik'
     )
   },
    unmounted() {

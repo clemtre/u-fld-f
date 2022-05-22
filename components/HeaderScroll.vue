@@ -38,9 +38,9 @@ export default {
       // this.hidden = true
     }
   },
-  // destroyed() {
-  //   window.removeEventListener('scroll', this.handleScroll)
-  // },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
 }
 </script>
 

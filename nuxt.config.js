@@ -49,8 +49,7 @@ export default {
     '~/plugins/stripHTML.js'
   ],
 
-  modules: [
+  buildModules: [
     '@nuxt/image',
-  ],
-
+  ]
 }

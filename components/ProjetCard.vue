@@ -4,11 +4,11 @@
     <img
       v-bind:style="{ width: `${this.getName('images').val}%` }"
       v-if="this.getName('images').on"
-      :src="url + projet.entete + qual"
+      :src="`${url}${!isPortrait ? projet.entete : projet.entete_portrait}${qual}`"
       alt=""
     />
     <div class="texte" v-bind:class="{ 'texteIndex' : isIndexCheck || !this.getName('images').on }">
-      <p class="titre">{{ projet.titre | stripHTML }}</p>
+      <p class="titre">{{projet.titre}}</p>
 
       <p class="sous-titre" v-html="projet.date + ' • ' + projet.nomClient"></p>
       <!-- <uf-logo class="uf-mono" size="32px" color="" /> -->
@@ -30,7 +30,7 @@ export default {
       qual: '?quality=80&width=1920&withoutEnlargement',
     }
   },
-  props: ['projet'],
+  props: ['projet', 'isPortrait'],
   computed: {
     isIndexCheck : function() {
       return this.getName('images').val < this.thresholdIndex
@@ -86,7 +86,7 @@ a:hover .titre {
 }
 .sous-titre {
   margin: 0;
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .texteIndex .titre {
@@ -133,5 +133,6 @@ img {
   max-height: 100vh;
   max-width: 100%;
   order: 1;
+  object-fit: contain;
 }
 </style>
