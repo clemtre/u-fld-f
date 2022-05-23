@@ -2,6 +2,7 @@
 - navigation horizontale entre projets + retour accueil
 - reprendre le principe de la page d'accueil mais en plus discret
 - contact/network/colophon 
+- meta : description, titre d'onglet par projet 
 
 #### fix/bug
 - lettrage d'accueil mauvaise qualité
