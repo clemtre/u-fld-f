@@ -17,7 +17,7 @@
         v-for="(media, j) in mediaArr"
         :key="j"
         v-bind:class="`serie-${mediaArr.length}`"
-        :src="`${url}${media.disk}${qual}`"
+        :src="`${$config.CDN}image/fetch/w_1000,h_1000,c_limit/${url}${media.disk}${qual}`"
       />
     </div>
     <site-footer></site-footer>

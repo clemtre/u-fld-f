@@ -1,10 +1,10 @@
 <template >
   <nuxt-link :to="projet.slug" v-if="projet.entete">
     <div class="ctn-projet" v-bind:class="{ 'projetIndex' : isIndexCheck || !this.getName('images').on}">
-    <nuxt-img
+    <img
       v-bind:style="{ width: `${this.getName('images').val}%` }"
       v-if="this.getName('images').on"
-      :src="`${url}${!isPortrait ? projet.entete : projet.entete_portrait}${qual}`"
+      :src="`${url}${!isPortrait ? projet.entete : projet.entete_portrait}`"
       alt=""
     />
     <div class="texte" v-bind:class="{ 'texteIndex' : isIndexCheck || !this.getName('images').on }">
@@ -26,7 +26,7 @@ export default {
     return {
       isIndex: false,
       thresholdIndex: 50,
-      url: `${this.$config.apiUrl}assets/`,
+      url: `${this.$config.CDN}image/fetch/w_1000,h_1000,c_limit/${this.$config.apiUrl}assets/`,
       qual: '?quality=80&width=1920&withoutEnlargement',
     }
   },

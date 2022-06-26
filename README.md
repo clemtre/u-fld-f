@@ -3,6 +3,7 @@
 - reprendre le principe de la page d'accueil mais en plus discret
 - contact/network/colophon 
 - meta : description, titre d'onglet par projet 
+- embed vidéos 
 
 #### fix/bug
 - lettrage d'accueil mauvaise qualité
@@ -12,3 +13,5 @@
 
 #### style
 - revoir crédits projets (+ d'espace / retours à la ligne)
+- image projet verticales > 100vh 
+- typo uf soulignement à revoir 

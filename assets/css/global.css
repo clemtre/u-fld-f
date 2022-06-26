@@ -74,5 +74,5 @@ hr {
 }
 
 .dark-mode hr{
-  border-top: 1px dotted var(--jaune);
+  border-top: 1px dotted var(--blanc);
 }
