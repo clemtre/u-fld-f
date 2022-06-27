@@ -81,12 +81,12 @@ a:hover .titre {
   margin: 0;
   text-align: center;
   font-size: 32px;
-  font-family: UnexploredFields;
+  /* font-family: ; */
   padding-bottom: 5px;
 }
 .sous-titre {
   margin: 0;
-  font-size: 12px;
+  font-size: 32px;
 }
 
 .texteIndex .titre {

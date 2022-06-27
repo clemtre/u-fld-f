@@ -15,3 +15,9 @@
 - revoir crédits projets (+ d'espace / retours à la ligne)
 - image projet verticales > 100vh 
 - typo uf soulignement à revoir 
+
+
+
+#### images projets
+- régler l'odre des images
+- "type" pour isoler une image avec des bordures cf la premiere image du roncier 

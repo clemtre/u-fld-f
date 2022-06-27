@@ -11,15 +11,18 @@
 
     <p class="meta" v-html="projet.date + ' • ' + projet.nomClient"></p>
     <p class="meta">{{ projet.credits }}</p>
-    <p class="paragraph" v-html="projet.corps"></p>
-    <div class="serie-ctn" v-for="(mediaArr, i) in projet.medias_CLEAN" :key="i">
+    <p class="paragraph-centre" v-html="projet.corps"></p>
+    <section class="images-ctn">
+
+      <div class="serie-ctn" v-for="(mediaArr, i) in projet.medias_CLEAN" :key="i">
       <img
         v-for="(media, j) in mediaArr"
         :key="j"
         v-bind:class="`serie-${mediaArr.length}`"
-        :src="`${$config.CDN}image/fetch/w_1000,h_1000,c_limit/${url}${media.disk}${qual}`"
+        :src="`${$config.CDN}image/fetch/w_1000,h_1000,c_limit/${url}${media.disk}`"
       />
     </div>
+    </section>
     <site-footer></site-footer>
   </div>
 </template>
@@ -55,11 +58,16 @@ export default {
 </script>
 
 <style scoped>
+.images-ctn {
+  display:flex;
+  flex-direction: column;
+  gap: var(--gutter);
+}
 .serie-ctn {
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: center;
+  justify-content: space-around;
 }
 .serie-3 {
   width: 33%;
@@ -73,7 +81,7 @@ export default {
 }
 img {
   max-height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .meta {
@@ -95,5 +103,12 @@ img {
   font-size: 32px;
   font-family: UnexploredFields;
   padding-bottom: 5px;
+}
+.paragraph-centre {
+  transform: translateX(-50%);
+margin-left: 50%;
+margin-top: calc(var(--gutter)*4);
+  margin-bottom: calc(var(--gutter)*4);
+
 }
 </style>

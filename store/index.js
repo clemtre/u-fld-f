@@ -52,7 +52,6 @@ export const mutations = {
 			let countMedia = 0
 
 
-			// console.log(projet.titre, projet.medias.length ? "c'est bien" : "Y'A PAS D'IMAGES !!!")
 
 			if (projet.medias.length) {
 				for(const media of projet.medias){
