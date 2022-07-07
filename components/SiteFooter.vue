@@ -17,33 +17,27 @@ export default {}
 </script>
 
 <style scoped >
-.grad {
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  height: 16px;
-  width: 100%;
-}
 p,a {
   color: var(--blanc);
-  font-size: 24px;
+  font-size: var(--M);
   text-align: right;
-  margin-right: 16px;
+  margin-right: var(--gutter);
 }
 p {
   align-self: center;
+  margin-top: 0;
 }
 .wrapper {
-  width: 100%;
   border-top: 1px solid var(--blanc);
-  margin-top: calc(var(--gutter))
+
+  width: 100%;
+  /* border-top: 1px solid var(--blanc); */
+  padding-top: calc(var(--gutter) * 2)
 }
 .el {
   justify-content: flex-end;
   width: 100%;
   display: flex;
-  background-color: black;
+  background-color: var(--noir);
 }
 </style>

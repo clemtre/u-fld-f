@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "DrukWide";
+  src:local("DrukWide"),
+  url(~assets/fonts/Druk-Wide-Medium.otf) format('opentype');
+}
 @import url('~/static/uf-font/style.css');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Libre+Baskerville:ital@0;1&display=swap');
 body {
@@ -9,7 +14,7 @@ body {
 .ctn-main {
   overflow-x: hidden;
   box-sizing: border-box;
-  width: calc(100vw - ( var(--gutter) * 2 ));
+  /* width: calc(100vw - ( var(--gutter) * 2 )); */
   margin: var(--gutter);
 }
 
@@ -26,12 +31,13 @@ button{
 }
 
 p,a,li, table {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'DrukWide';
+  font-size: var(--M);
 }
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.2s;
 }
 .page-enter,
 .page-leave-to {
@@ -48,7 +54,7 @@ p,a,li, table {
 } */
 
 .paragraph p:not(:first-child) {
-  text-indent: 24px;
+  text-indent: 48px;
 }
 .paragraph > p {
   margin: 0;
@@ -59,9 +65,9 @@ p,a,li, table {
   margin-top: calc(var(--gutter)*4);
   margin-bottom: calc(var(--gutter)*4);
   width: 100%;
-  max-width: 800px;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  /* max-width: 800px; */
+  /* margin-left: 50%; */
+  /* transform: translateX(-50%); */
 
 }
 hr {

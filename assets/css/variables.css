@@ -1,8 +1,15 @@
 :root {
     --noir: black;
-    --blanc: white;
-    --jaune: yellow;
+    --blanc: lightgray;
+    --jaune: #f5d915;
+
+    --o : .5;
 
     --gutter: 10px;
+    --largeur-corps : 900px;
 
+    --S : 12px;
+    --M : 24px;
+    --L : 42px; 
+    --XXL : 72px;
   }

@@ -6,7 +6,7 @@
     </button>
 
     <!-- images -->
-    <button @click="set('images')">
+    <!-- <button @click="set('images')">
       images {{ this.getName('images').on ? truePh : falsePh }}
     </button>
     <button @click="decr('images')" class="no-gap">
@@ -14,15 +14,22 @@
     </button>
         <button @click="incr('images')" class="no-gap">
       +
-    </button>
+    </button> -->
     <!-- images -->
     
     <button @click="set('bio')">
-      bio {{ this.getName('bio').on ? truePh : falsePh }}
+      about {{ this.getName('bio').on ? truePh : falsePh }}
     </button>
-    <button @click="set('clients')">
+    <nuxt-link to="/articles">
+
+      <button>
+        writing <span class="symbole">↗
+        </span>
+        </button>
+        </nuxt-link>
+    <!-- <button @click="set('clients')">
       clients {{ this.getName('clients').on ? truePh : falsePh }}
-    </button>
+    </button> -->
     <button @click="set('darkmode')">
       night {{ this.getName('darkmode').on ? truePh : falsePh }}
     </button>
@@ -50,7 +57,13 @@
   border-left: none;
 }
 button {
+  font-size: var(--M);
   }
+  .symbole {
+    color:var(--noir);
+    display: inline-block;
+    transform: translate(-5px,-5px);
+}
 #ctn-ui {
   z-index: 10000;
   display: flex;

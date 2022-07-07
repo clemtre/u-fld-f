@@ -1,16 +1,16 @@
 export default {
   env: {
     apiUrl: process.env.API_URL,
-    baseUrl: process.env.BASE_URL,
-    // NODE_ENV: process.env.NODE_ENV
+    CDN: process.env.CDN
   },
   publicRuntimeConfig: {
     apiUrl: process.env.API_URL,
-    baseUrl: process.env.BASE_URL
+    CDN: process.env.CDN
   },
   privateRuntimeConfig: {
     apiUrl: process.env.API_URL,
-    baseUrl: process.env.BASE_URL
+    CDN: process.env.CDN
+
   },
 
   target: 'static',
@@ -37,10 +37,8 @@ export default {
 
   css: [
     '@/assets/css/variables.css',
-
     '@/assets/css/global.css',
     '@/assets/css/darkmode.css',
-    '@/assets/css/type.css'
 
 
   ],
@@ -52,9 +50,6 @@ export default {
 
   ],
 
-  image: {
-    domains: [process.env.DOMAIN, `${process.env.DOMAIN}*`],
-  },
 
   components: true,
 
