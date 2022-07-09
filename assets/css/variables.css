@@ -3,13 +3,18 @@
     --blanc: lightgray;
     --jaune: #f5d915;
 
+    --A: var(--noir);
+    --B: var(--blanc);
+    --J: var(--jaune);
+
+
     --o : .5;
 
     --gutter: 10px;
     --largeur-corps : 900px;
 
     --S : 12px;
-    --M : 24px;
-    --L : 42px; 
-    --XXL : 72px;
+    --M : 18px;
+    --L : 32px; 
+    --XXL : 48px;
   }

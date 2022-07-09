@@ -58,7 +58,7 @@ img {
 #headerscroll {
   overflow-y: hidden;
   pointer-events: none;
-  width: 100%;
+  width: calc(100% - var(--gutter) * 2);
   position: fixed;
   top: var(--gutter);
   overflow-x: hidden;

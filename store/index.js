@@ -44,7 +44,7 @@ export const mutations = {
       if (projet.corps) {
         projet.corps = projet.corps.replaceAll(
           this.$config.apiUrl,
-          `${this.$config.CDN}image/fetch/w_500,h_500,c_limit/${this.$config.apiUrl}`
+          `${this.$config.CDN}image/fetch/w_2000,h_2000,c_limit/${this.$config.apiUrl}`
         )
       }
       projet.images = []
@@ -63,11 +63,12 @@ export const mutations = {
       }
 
       projet.titre = projet.titre.replace('<p>', '').replace('</p>', '')
+      projet.credits = projet.credits.replace('<p>', '').replace('</p>', '')
     }
     state.Bio = data.Bio.data
     state.Projets = data.Projets.data
       .filter((projet) => projet.featured === true)
-      .reverse()
+      // .reverse()
   },
 }
 export const actions = {

@@ -55,6 +55,7 @@ export default {
 
 
   plugins: [
+    '~/plugins/style.client.js',
     '~/plugins/asset-url.js',
     '~/plugins/stripHTML.js'
   ],

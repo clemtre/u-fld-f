@@ -18,26 +18,25 @@ export default {}
 
 <style scoped >
 p,a {
-  color: var(--blanc);
+  color: var(--A);
   font-size: var(--M);
   text-align: right;
-  margin-right: var(--gutter);
+  /* margin-right: var(--gutter); */
 }
 p {
   align-self: center;
-  margin-top: 0;
+  margin: 10px;
 }
 .wrapper {
-  border-top: 1px solid var(--blanc);
-
+  border-top: 1px solid var(--A);
+z-index: 99999999999999999999999999 ;
   width: 100%;
   /* border-top: 1px solid var(--blanc); */
-  padding-top: calc(var(--gutter) * 2)
 }
 .el {
   justify-content: flex-end;
   width: 100%;
   display: flex;
-  background-color: var(--noir);
+  background-color: var(--B);
 }
 </style>

@@ -26,7 +26,7 @@ button{
   font-family: 'IBM Plex Mono', monospace;
   background:none;
   border-radius: 0;
-  border: 1px solid red;
+  border:none;
 
 }
 
@@ -42,6 +42,9 @@ p,a,li, table {
 .page-enter,
 .page-leave-to {
   opacity: 0;
+}
+p {
+  margin: 10px 0;
 }
 
 /* .projet:hover .titre, a:hover{
@@ -61,11 +64,16 @@ p,a,li, table {
   line-height: 1.4;
   
 }
+.paragraph p {
+  break-inside: avoid-column;
+}
 .paragraph {
-  margin-top: calc(var(--gutter)*4);
-  margin-bottom: calc(var(--gutter)*4);
-  width: 100%;
-  /* max-width: 800px; */
+ 
+  widows: 2;
+  margin: calc(var(--gutter) * 1) 0;
+  width: calc(100% - var(--gutter));
+  max-width: calc(100% - var(--gutter) * 2);
+  /* text-align: justify; */
   /* margin-left: 50%; */
   /* transform: translateX(-50%); */
 
@@ -81,4 +89,9 @@ hr {
 
 .dark-mode hr{
   border-top: 1px dotted var(--jaune);
+}
+
+.XL {
+  font-size: var(--XXL);
+  margin: var(--gutter) 0;
 }

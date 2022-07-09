@@ -1,31 +1,15 @@
 
-.dark-mode :is(p, a, span, button){
-    color: var(--blanc);
-}
-.dark-mode :is(html, body){
-        background-color : var(--noir) ;
-      
-}
-
-
-.dark-mode :is(button){
-    border-color: var(--noir);
-    color: var(--noir);
-}
-.light-mode :is(button){
-    border-color: var(--blanc);
-    color: var(--blanc);
+p, a, span, button{
+    color: var(--A);
 }
 
 
 
-.light-mode :is(p, a){
-    color: var(--noir);
-}
 
-.light-mode :is(html, body){
-    background-color : var(--blanc) ;
-  
+
+
+html, body {
+    background-color: var(--B);
 }
 
 .light-mode .ufLogo { fill: var(--noir) }

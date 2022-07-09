@@ -1,12 +1,13 @@
 <template>
-  
   <div class="ctn-main" id="ctn-ui">
-    <button @click="set('projets')">
-      projets {{ this.getName('projets').on ? truePh : falsePh }}
-    </button>
+    <p class="resume" v-html="$store.state.Bio.resume"></p>
+    <div class="ctn-button">
+      <button @click="set('projets')">
+        projects {{ this.getName('projets').on ? truePh : falsePh }}
+      </button>
 
-    <!-- images -->
-    <!-- <button @click="set('images')">
+      <!-- images -->
+      <!-- <button @click="set('images')">
       images {{ this.getName('images').on ? truePh : falsePh }}
     </button>
     <button @click="decr('images')" class="no-gap">
@@ -15,40 +16,33 @@
         <button @click="incr('images')" class="no-gap">
       +
     </button> -->
-    <!-- images -->
-    
-    <button @click="set('bio')">
-      about {{ this.getName('bio').on ? truePh : falsePh }}
-    </button>
-    <nuxt-link to="/articles">
+      <!-- images -->
 
-      <button>
-        writing <span class="symbole">↗
-        </span>
-        </button>
-        </nuxt-link>
-    <!-- <button @click="set('clients')">
+      <button @click="set('bio')">
+        info {{ this.getName('bio').on ? truePh : falsePh }}
+      </button>
+      <button>writing [x]</button>
+      <!-- <button @click="set('clients')">
       clients {{ this.getName('clients').on ? truePh : falsePh }}
     </button> -->
-    <button @click="set('darkmode')">
-      night {{ this.getName('darkmode').on ? truePh : falsePh }}
-    </button>
+      <button @click="darkToggle()">darkmode</button>
+      <!-- <button @click="set('darkmode')">
+        night {{ this.getName('darkmode').on ? truePh : falsePh }}
+      </button> -->
+    </div>
     <div id="ph-ui"></div>
   </div>
 </template>
 
   <style scoped>
 .dark-mode #ph-ui {
-    background-color: var(--jaune);
+  /* background-color: var(--jaune); */
 }
-.light-mode #ph-ui {
-    background-color: var(--noir);
-}
-#ph-ui{
+#ph-ui {
   width: 100%;
   height: 100%;
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   z-index: -10000;
 }
@@ -58,25 +52,48 @@
 }
 button {
   font-size: var(--M);
-  }
-  .symbole {
-    color:var(--noir);
-    display: inline-block;
-    transform: translate(-5px,-5px);
+  padding: 0px;
+  /* background-color: var(--jaune); */
+  /* border: 10px solid var(--jaune); */
+}
+.symbole {
+  /* color:var(--blanc); */
+  display: inline-block;
+  transform: translate(-5px, -5px);
 }
 #ctn-ui {
   z-index: 10000;
   display: flex;
-  align-items: stretch;
-  padding: var(--gutter);
-  gap: var(--gutter);
+  flex-wrap: wrap;
+  width: calc(100% - 20px);
+  row-gap: 5px;
+  /* padding: var(--gutter); */
+  column-gap: var(--gutter);
   position: sticky;
   margin-top: calc(-1 * var(--gutter));
-  top:var(--gutter)
+  top: var(--gutter);
+  justify-content: space-between;
+}
+.ctn-button {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ctn-button *:not(:first-child) {
+  border-left: 1px solid var(--A);
+  padding-left: 10px;
 }
 button:hover {
   background-color: fuchsia;
-  
+  padding: 0 10px;
+  color: var(--B);
+}
+.resume {
+  margin: 0;
+  order: 10;
+  text-align: right;
+  align-self: flex-end;
+  width: max-content;
 }
 </style>
 <script>
@@ -87,6 +104,7 @@ export default {
     return {
       falsePh: '[_]',
       truePh: '[x]',
+      val:'2'
     }
   },
   methods: {
@@ -95,7 +113,7 @@ export default {
       if (arg === 'darkmode') {
         if (res.on) {
           this.$colorMode.preference = 'light'
-          } else {
+        } else {
           this.$colorMode.preference = 'dark'
         }
       }
@@ -103,12 +121,20 @@ export default {
     },
 
     incr: function (arg) {
-      this.$store.commit('INCR', [this.getName(arg),1])
-      !this.getName('images').on ? this.$store.commit('SWITCH', this.getName('images')) : null
+      this.$store.commit('INCR', [this.getName(arg), 1])
+      !this.getName('images').on
+        ? this.$store.commit('SWITCH', this.getName('images'))
+        : null
     },
-    decr: function (arg) {this.$store.commit('INCR', [this.getName(arg),-1])
-      !this.getName('images').on ? this.$store.commit('SWITCH', this.getName('images')) : null
-    }
+    decr: function (arg) {
+      this.$store.commit('INCR', [this.getName(arg), -1])
+      !this.getName('images').on
+        ? this.$store.commit('SWITCH', this.getName('images'))
+        : null
+    },
+    darkToggle: function (val) {
+      this.$style()
+    },
   },
   computed: {
     ...mapGetters({
